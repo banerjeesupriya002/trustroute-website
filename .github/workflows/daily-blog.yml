@@ -2,22 +2,28 @@ name: Daily TrustRoute Blog
 
 on:
   schedule:
-    - cron: "30 3 * * *" # 09:00 IST
+    - cron: "0 3 * * *" # 08:30 IST every day
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: trustroute-daily-blog
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate today's article
+      - name: Generate, fact-check and publish today's article
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
         run: node scripts/generate-blog.mjs
 
       - name: Commit and publish
@@ -28,3 +34,16 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "chore: publish daily mobility insight"
           git push
+
+      - name: Notify Slack if automation fails
+        if: ${{ failure() }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            payload=$(printf '{"text":"TrustRoute Blog automation failed. Check: %s"}' "$RUN_URL")
+            curl -sS -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK_URL"
+          else
+            echo "SLACK_WEBHOOK_URL not configured; GitHub Actions will record the failure."
+          fi
