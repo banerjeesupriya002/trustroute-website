@@ -210,13 +210,31 @@ const articleHtml = `<!doctype html>
 </head>
 <body>
 <header class="article-nav">
-  <a href="../index.html" class="brand"><img src="../assets/logo.png" alt="">Trust<b>Route</b></a>
-  <a href="../blog.html">← All insights</a>
+  <a href="../index.html" class="brand">
+    <img src="../assets/logo.png" alt="TrustRoute logo">
+    <span class="brand-word">Trust<b>Route</b></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#how-it-works">How it works</a>
+    <a href="../index.html#safety">Safety</a>
+    <a href="../index.html#faq">FAQ</a>
+    <a href="../investors.html">Investors</a>
+    <a href="../blog.html" class="is-active">Blog</a>
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+  <div class="nav-right">
+    <a class="all-insights" href="../blog.html">←&nbsp; All insights</a>
+  </div>
 </header>
+<section class="article-shell">
 <main class="article">
-  <div class="eyebrow">${escapeHtml(post.category)} · ${today}</div>
-  <h1>${escapeHtml(post.title)}</h1>
-  <p class="dek">${escapeHtml(post.excerpt)}</p>
+  <div class="article-head">
+    <div class="eyebrow">${escapeHtml(post.category)} · ${today}</div>
+    <h1>${escapeHtml(post.title)}</h1>
+    <p class="dek">${escapeHtml(post.excerpt)}</p>
+  </div>
   <article>${post.body_html}</article>
   <div class="sources"><strong>Sources</strong><ul>${post.sources.map(s => `<li><a href="${safeUrl(s.url)}" rel="nofollow noopener" target="_blank">${escapeHtml(s.title)}</a></li>`).join("")}</ul></div>
   <div class="back"><a href="../blog.html">← Back to TrustRoute Journal</a></div>
