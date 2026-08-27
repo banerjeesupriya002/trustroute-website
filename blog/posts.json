@@ -1,5 +1,26 @@
 [
   {
+    "date": "2026-08-28",
+    "title": "When monsoon disruption becomes a business-continuity issue: an employer playbook beyond WFH",
+    "slug": "when-monsoon-disruption-becomes-a-business-continuity-issue-an-employer-playbook-beyond-wf-2026-08-28",
+    "category": "Employer mobility",
+    "excerpt": "Gurugram’s August 25 work-from-home advisory showed why heavy rain is not simply an attendance issue. Employers need pre-set decision triggers, clear communications, protection for late-shift staff and a mobility plan that treats carpooling as voluntary support—not a reason to travel in unsafe conditions.",
+    "sources": [
+      {
+        "title": "The Indian Express: Gurgaon rain leaves school buses stranded in water, WFH advisory tomorrow",
+        "url": "https://indianexpress.com/article/cities/delhi/gurugram-work-from-home-heavy-rain-waterlogging-10847407/"
+      },
+      {
+        "title": "Government of India: Economic Survey 2025–26, Chapter 15 (Urbanisation)",
+        "url": "https://www.indiabudget.gov.in/economicsurvey/doc/eschapter/echap15.pdf"
+      },
+      {
+        "title": "India Meteorological Department: SOP for Weather Forecasting and Warning",
+        "url": "https://mausam.imd.gov.in/imd_latest/contents/pdf/forecasting_sop.pdf"
+      }
+    ]
+  },
+  {
     "date": "2026-08-27",
     "title": "Why verified carpooling can make the daily commute feel simpler",
     "slug": "why-verified-carpooling-makes-the-daily-commute-simpler",
