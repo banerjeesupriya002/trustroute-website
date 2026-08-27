@@ -1,8 +1,9 @@
-name: Daily TrustRoute Blog
+name: TrustRoute Blog Publisher
 
 on:
   schedule:
-    - cron: "0 3 * * *" # 08:30 IST every day
+    # Tue, Wed and Thu at 08:30 IST (03:00 UTC).
+    - cron: "0 3 * * 2,3,4"
   workflow_dispatch:
 
 permissions:
@@ -18,7 +19,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Generate, fact-check and publish today's article
         env:
@@ -32,7 +33,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add blog blog.html sitemap.xml
           git diff --cached --quiet && exit 0
-          git commit -m "chore: publish daily mobility insight"
+          git commit -m "chore: publish TrustRoute mobility insight"
           git push
 
       - name: Notify Slack if automation fails

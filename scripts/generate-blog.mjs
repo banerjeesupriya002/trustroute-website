@@ -247,8 +247,39 @@ async function callOpenAI({ model, apiKey, input, tools, schemaName, schema }) {
   });
   if (!response.ok) throw new Error(`OpenAI API error: ${await response.text()}`);
   const data = await response.json();
-  if (!data.output_text) throw new Error("OpenAI returned no output_text.");
-  return JSON.parse(data.output_text);
+
+  // The REST Responses API does not guarantee a top-level output_text field.
+  // With web_search + structured outputs, the JSON text is normally nested
+  // inside an output message content item. Extract it robustly.
+  const text = extractResponseText(data);
+  if (!text) {
+    const outputTypes = Array.isArray(data.output)
+      ? data.output.map(item => item?.type || "unknown").join(", ")
+      : "none";
+    throw new Error(`OpenAI returned no text content. output_types=${outputTypes}`);
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    throw new Error(`OpenAI returned non-JSON text: ${text.slice(0, 500)}`);
+  }
+}
+
+function extractResponseText(data) {
+  if (typeof data?.output_text === "string" && data.output_text.trim()) {
+    return data.output_text.trim();
+  }
+
+  const parts = [];
+  for (const item of (data?.output || [])) {
+    for (const content of (item?.content || [])) {
+      if (typeof content?.text === "string" && content.text.trim()) {
+        parts.push(content.text.trim());
+      }
+    }
+  }
+  return parts.join("\n").trim();
 }
 
 function blogSchema() {

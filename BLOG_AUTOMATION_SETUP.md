@@ -2,9 +2,9 @@
 
 The website keeps its existing design and Blog tab. This workflow automates the editorial and publishing process without changing the front-end.
 
-## What happens every day
+## What happens three times a week
 
-**08:30 IST:** GitHub Actions starts the pipeline.
+**Tuesday, Wednesday and Thursday at 08:30 IST:** GitHub Actions starts the pipeline.
 
 1. Searches the live public web for timely mobility/commuting stories and useful evergreen questions.
 2. Scores candidate topics for freshness, reader value, evidence quality, TrustRoute relevance and duplication risk.
@@ -59,17 +59,19 @@ If the workflow fails, it sends one alert to that Slack webhook. If you do not c
 
 ### Hosting requirement
 
-Your normal deployment must publish repository changes after `git push`. No daily manual action is required.
+Your normal deployment must publish repository changes after `git push`. No manual publishing action is required.
 
-## When will the first post appear?
+## When will posts appear?
 
-Once `OPENAI_API_KEY` is configured and this workflow is committed to the live repository, the next scheduled run is **08:30 IST**. If that run succeeds, the article is committed and pushed automatically immediately afterward.
+Once `OPENAI_API_KEY` is configured and this workflow is committed to the live repository, posts will be scheduled for **Tuesday, Wednesday and Thursday at 08:30 IST**. If a run succeeds, the article is committed and pushed automatically immediately afterward.
 
 You can also use **Actions → Daily TrustRoute Blog → Run workflow** once to test it immediately; after that, daily runs are automatic.
 
-## Why 08:30 IST?
+## Why Tuesday, Wednesday and Thursday at 08:30 IST?
 
-For an India-focused commuter audience, morning is the most logical publication window because readers are checking commute, traffic and workplace information before the working day. Published research has found strong India engagement around the morning window, including about 09:00 IST, while more recent India-specific professional-social data also points to weekday morning engagement around 08:00–10:00 IST. 08:30 IST is therefore the starting point; later, the schedule can be changed based on TrustRoute's own analytics.
+For TrustRoute, I recommend **three mid-week morning publications: Tuesday, Wednesday and Thursday at 08:30 IST**. This keeps a steady presence without flooding readers with daily articles. Blog research shows Tuesday/Wednesday are strong traffic days overall, with weekday mornings outperforming later-day publication; India-specific professional audience research also points to roughly 08:00–10:00 IST as a strong window. citeturn0search13turn0search8
+
+This schedule is deliberately focused on the working week because TrustRoute's audience includes office commuters and corporate decision-makers. After enough real traffic data accumulates, the schedule should be refined using TrustRoute's own analytics rather than generic benchmarks.
 
 ## Important trust rules
 
