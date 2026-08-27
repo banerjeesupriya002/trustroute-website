@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — TrustRoute</title>
+<meta name="description" content="How TrustRoute collects, uses, and protects your data.">
+
+<link rel="canonical" href="https://trustroute.app/privacy.html">
+<meta name="theme-color" content="#0a1a2c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustRoute">
+<meta property="og:title" content="Privacy Policy — TrustRoute">
+<meta property="og:description" content="How TrustRoute collects, uses, and protects your data.">
+<meta property="og:url" content="https://trustroute.app/privacy.html">
+<meta property="og:image" content="https://trustroute.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy — TrustRoute">
+<meta name="twitter:description" content="How TrustRoute collects, uses, and protects your data.">
+<meta name="twitter:image" content="https://trustroute.app/assets/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   TrustRoute — shared stylesheet
+   Design tokens derived from the product's own mark and app screens.
+   ========================================================================== */
+
+:root{
+  /* --- color: navy from app icon/splash, teal from primary CTA, pink from women-only badge --- */
+  --navy-950:#050c15;
+  --navy-900:#0a1a2c;
+  --navy-800:#102340;
+  --navy-700:#183253;
+  --navy-600:#274468;
+
+  --teal-600:#0d7a63;
+  --teal-500:#159172;
+  --teal-400:#2fb28e;
+  --teal-300:#7fd6bb;
+  --teal-tint:#e3f5ef;
+
+  --pink-500:#d6338a;
+  --pink-tint:#fbe2ef;
+
+  --amber-400:#e8a13b;
+
+  --paper:#f6f8f7;
+  --paper-alt:#eef3f1;
+  --white:#ffffff;
+
+  --ink-900:#0c1b28;
+  --ink-700:#33495a;
+  --ink-500:#5c7583;
+  --ink-mist:#c9dbe0;
+
+  --line:#d8e3e0;
+  --line-dark:#22364f;
+
+  /* --- type --- */
+  --f-display:'Space Grotesk', 'Segoe UI', sans-serif;
+  --f-body:'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --f-mono:'IBM Plex Mono', 'Courier New', monospace;
+
+  /* --- scale / rhythm --- */
+  --max:1220px;
+  --edge:clamp(20px, 5vw, 64px);
+  --radius-lg:28px;
+  --radius-md:18px;
+  --radius-sm:10px;
+  --shadow-soft:0 20px 60px -25px rgba(6,20,32,.35);
+  --shadow-card:0 14px 34px -18px rgba(6,20,32,.28);
+  --ease:cubic-bezier(.16,.8,.24,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+}
+
+body{
+  margin:0;
+  font-family:var(--f-body);
+  color:var(--ink-900);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,p{margin:0}
+button{font:inherit;cursor:pointer}
+
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--edge)}
+
+::selection{background:var(--teal-400);color:var(--navy-950)}
+
+/* focus visibility */
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal-400);outline-offset:3px;border-radius:6px}
+
+/* ==========================================================================
+   Type utilities
+   ========================================================================== */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.55em;
+  font-family:var(--f-mono);
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--teal-500);
+  font-weight:500;
+}
+.eyebrow::before{
+  content:"";
+  width:18px;height:1px;
+  background:var(--teal-500);
+  display:inline-block;
+}
+.on-dark .eyebrow{color:var(--teal-300)}
+.on-dark .eyebrow::before{background:var(--teal-300)}
+
+h1,h2,h3{font-family:var(--f-display);letter-spacing:-.01em;line-height:1.05}
+h1{font-weight:600}
+h2{font-weight:600}
+
+.h-hero{font-size:clamp(2.5rem,5.4vw,4.2rem);line-height:1.02}
+.h-section{font-size:clamp(1.9rem,3.4vw,2.7rem)}
+.h-card{font-size:1.15rem;font-weight:600}
+
+.lede{font-size:clamp(1.05rem,1.4vw,1.22rem);color:var(--ink-500);line-height:1.6;max-width:52ch}
+.on-dark .lede{color:var(--ink-mist)}
+
+.section-head{max-width:640px;margin-bottom:52px}
+.section-head.center{margin-inline:auto;text-align:center}
+.section-head p{margin-top:14px}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  padding:.9em 1.5em;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.95rem;
+  border:1px solid transparent;
+  transition:transform .35s var(--ease), background .25s, border-color .25s, color .25s, box-shadow .25s;
+  white-space:nowrap;
+}
+.btn--primary{background:var(--teal-500);color:var(--white);box-shadow:0 12px 26px -10px rgba(21,145,114,.55)}
+.btn--primary:hover{background:var(--teal-600);transform:translateY(-2px)}
+.btn--ghost-dark{border-color:rgba(255,255,255,.28);color:var(--white)}
+.btn--ghost-dark:hover{border-color:rgba(255,255,255,.6);transform:translateY(-2px)}
+.btn--ghost-light{border-color:var(--line-dark, #cddbd7);color:var(--ink-900);border-color:#cddbd7}
+.btn--ghost-light:hover{border-color:var(--navy-900);transform:translateY(-2px)}
+.btn--sm{padding:.65em 1.1em;font-size:.85rem}
+.btn svg{width:16px;height:16px;flex:none}
+
+/* ==========================================================================
+   Nav
+   ========================================================================== */
+.nav{
+  position:fixed;inset-inline:0;top:0;z-index:100;
+  padding:18px var(--edge);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .35s var(--ease), padding .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+  border-bottom:1px solid transparent;
+}
+.nav.is-scrolled{
+  background:rgba(10,26,44,.86);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  padding-block:12px;
+  border-color:rgba(255,255,255,.08);
+  box-shadow:0 12px 30px -20px rgba(0,0,0,.6);
+}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:36px;height:36px;border-radius:9px;flex:none}
+.brand-word{font-family:var(--f-display);font-weight:600;font-size:1.18rem;color:var(--white);letter-spacing:-.01em}
+.brand-word b{color:var(--teal-300);font-weight:600}
+
+.nav-links{display:flex;align-items:center;gap:36px}
+@media (min-width: 881px){
+  .nav-links{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}
+}
+.nav-links a{
+  font-size:.92rem;color:rgba(255,255,255,.78);font-weight:500;
+  position:relative;padding-bottom:3px;
+  transition:color .25s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--teal-300);
+  transition:right .3s var(--ease);
+}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after,.nav-links a.is-active::after{right:0}
+.nav-links a.is-active{color:var(--white)}
+
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-toggle{display:none;background:none;border:0;padding:8px;color:var(--white)}
+.nav-toggle svg{width:24px;height:24px}
+
+@media (max-width: 880px){
+  .nav-links{
+    position:fixed;inset:0;top:0;
+    background:var(--navy-950);
+    flex-direction:column;justify-content:center;gap:30px;
+    transform:translateY(-100%);
+    transition:transform .4s var(--ease);
+    z-index:99;
+  }
+  .nav-links a{font-size:1.4rem}
+  .nav-links.is-open{transform:translateY(0)}
+  .nav-toggle{display:inline-flex}
+  .nav-right .btn--ghost-dark{display:none}
+  .nav-right .store-badge{display:none}
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(1100px 620px at 82% -8%, rgba(21,145,114,.35), transparent 60%),
+    radial-gradient(700px 500px at -10% 30%, rgba(214,51,138,.14), transparent 55%),
+    linear-gradient(180deg, var(--navy-950), var(--navy-900) 45%, var(--navy-800));
+  color:var(--white);
+  padding-top:158px;
+  padding-bottom:80px;
+  overflow:clip;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:56px;
+  align-items:center;
+}
+.hero-copy .eyebrow{margin-bottom:22px}
+.hero h1{margin-bottom:22px}
+.hero h1 .accent{color:var(--teal-300)}
+.hero .lede{margin-bottom:34px;color:rgba(233,241,238,.82)}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:44px}
+
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px 26px}
+.hero-badge{
+  display:flex;align-items:center;gap:9px;
+  font-size:.86rem;color:rgba(255,255,255,.72);
+  font-family:var(--f-mono);
+}
+.hero-badge svg{width:15px;height:15px;color:var(--teal-300);flex:none}
+
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-visual .route-svg{position:absolute;inset:-8% -10%;z-index:0;opacity:.9;pointer-events:none}
+.hero-card{
+  position:relative;z-index:1;
+  width:min(360px, 88%);
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.06);
+  transform:rotate(1.4deg);
+  animation:float 6s ease-in-out infinite;
+}
+.hero-card img{width:100%;display:block}
+
+@keyframes float{
+  0%,100%{transform:rotate(1.4deg) translateY(0)}
+  50%{transform:rotate(1.4deg) translateY(-14px)}
+}
+
+/* route line draw-in */
+.route-path{
+  fill:none;
+  stroke:var(--teal-400);
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-dasharray:7 10;
+  stroke-dashoffset:0;
+  opacity:.55;
+}
+.route-draw{
+  stroke-dasharray:1400;
+  stroke-dashoffset:1400;
+  animation:draw 2.6s var(--ease) .3s forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.route-pin{transform-origin:center;animation:pop .5s var(--ease) both}
+.route-pin.p1{animation-delay:.4s}
+.route-pin.p2{animation-delay:2.5s}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.route-car{animation:drive 2.6s var(--ease) .3s both}
+@keyframes drive{
+  0%{offset-distance:0%;opacity:0}
+  6%{opacity:1}
+  100%{offset-distance:100%;opacity:1}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-card{animation:none}
+  .route-draw{animation:none;stroke-dashoffset:0}
+  .route-pin,.route-car{animation:none;opacity:1}
+}
+
+/* ==========================================================================
+   Trust strip
+   ========================================================================== */
+.trust-strip{
+  background:var(--navy-900);
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-block:26px;
+}
+.trust-strip .wrap{
+  display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;align-items:center;
+}
+.trust-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.75);font-size:.9rem}
+.trust-item svg{width:18px;height:18px;color:var(--teal-300);flex:none}
+
+/* ==========================================================================
+   Sections (generic)
+   ========================================================================== */
+.section{padding-block:110px}
+.section--tight{padding-block:80px}
+.section--light{background:var(--paper)}
+.section--alt{background:var(--paper-alt)}
+.section--dark{background:linear-gradient(180deg,var(--navy-900),var(--navy-950));color:var(--white)}
+.section--dark .h-section{color:var(--white)}
+
+/* ==========================================================================
+   Problem statement
+   ========================================================================== */
+.problem{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.problem-visual{
+  border-radius:var(--radius-lg);
+  background:var(--navy-900);
+  padding:36px;
+  position:relative;
+  overflow:hidden;
+  min-height:280px;
+  display:flex;flex-direction:column;justify-content:center;gap:16px;
+}
+.problem-row{
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:14px;
+  padding:14px 18px;
+  font-family:var(--f-mono);
+  font-size:.82rem;
+  color:rgba(255,255,255,.6);
+}
+.problem-row .bad{color:#ff9a9a}
+.problem-row.good{border-color:rgba(47,178,142,.4);background:rgba(47,178,142,.08)}
+.problem-row.good .val{color:var(--teal-300)}
+
+/* ==========================================================================
+   Steps (fare-ladder inspired)
+   ========================================================================== */
+.steps{
+  border-radius:var(--radius-lg);
+  background:var(--white);
+  box-shadow:var(--shadow-card);
+  overflow:hidden;
+}
+.step{
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:22px;
+  padding:32px var(--edge, 36px);
+  border-bottom:1px solid var(--line);
+}
+.step:last-child{border-bottom:none}
+.step-num{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--teal-tint);
+  color:var(--teal-600);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-mono);font-weight:600;font-size:1.05rem;
+}
+.step h3{font-size:1.15rem;font-weight:600;margin-bottom:8px}
+.step p{color:var(--ink-500);line-height:1.6;max-width:56ch}
+
+/* ==========================================================================
+   Showcase gallery (real product screens)
+   ========================================================================== */
+.showcase-rail{
+  display:flex;gap:26px;
+  overflow-x:auto;
+  padding:8px 4px 28px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.showcase-rail::-webkit-scrollbar{height:8px}
+.showcase-rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+.showcase-card{
+  scroll-snap-align:start;
+  flex:0 0 auto;
+  width:250px;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow-card);
+  border:1px solid rgba(255,255,255,.08);
+  transition:transform .4s var(--ease), border-color .4s;
+  background:var(--navy-900);
+}
+.showcase-card:hover{transform:translateY(-8px);border-color:rgba(127,214,187,.35)}
+.showcase-card img{width:100%;display:block}
+.showcase-hint{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--f-mono);font-size:.78rem;color:var(--ink-500);
+  margin-top:4px;
+}
+.showcase-hint svg{width:14px;height:14px}
+
+/* ==========================================================================
+   Feature grid
+   ========================================================================== */
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+.feature-card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:32px 28px;
+  transition:border-color .3s, transform .3s var(--ease), box-shadow .3s;
+}
+.feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card);border-color:transparent}
+.feature-icon{
+  width:46px;height:46px;border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+}
+.feature-icon svg{width:22px;height:22px}
+.icon-teal{background:var(--teal-tint);color:var(--teal-600)}
+.icon-pink{background:var(--pink-tint);color:var(--pink-500)}
+.icon-amber{background:#fbeed7;color:var(--amber-400)}
+.feature-card h3{margin-bottom:10px}
+.feature-card p{color:var(--ink-500);line-height:1.6;font-size:.95rem}
+
+/* ==========================================================================
+   Cities row
+   ========================================================================== */
+.cities{
+  display:flex;flex-wrap:wrap;gap:18px;
+}
+.city-chip{
+  flex:1;min-width:220px;
+  display:flex;align-items:center;gap:16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius-md);
+  padding:22px 24px;
+}
+.city-chip .dot{width:10px;height:10px;border-radius:50%;background:var(--teal-400);flex:none;box-shadow:0 0 0 5px rgba(47,178,142,.18)}
+.city-chip h3{font-size:1.15rem;font-weight:600;color:var(--white)}
+.city-chip span{display:block;font-family:var(--f-mono);font-size:.78rem;color:var(--ink-mist);margin-top:3px}
+
+/* ==========================================================================
+   Safety grid
+   ========================================================================== */
+.safety-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:2px;
+  background:var(--line);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+.safety-card{
+  background:var(--white);
+  padding:34px;
+}
+.safety-card .tag{
+  font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--teal-600);margin-bottom:12px;display:block;
+}
+.safety-card h3{margin-bottom:10px;font-size:1.1rem}
+.safety-card p{color:var(--ink-500);font-size:.94rem;line-height:1.6}
+
+/* ==========================================================================
+   Stat / impact strip
+   ========================================================================== */
+.impact{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+}
+.impact-cell{
+  padding:34px 28px;
+  border-right:1px solid var(--line);
+}
+.impact-cell:last-child{border-right:none}
+.impact-cell .num{font-family:var(--f-display);font-size:2rem;font-weight:600;color:var(--teal-600)}
+.impact-cell .lbl{color:var(--ink-500);font-size:.88rem;margin-top:6px}
+
+/* ==========================================================================
+   CTA banner
+   ========================================================================== */
+.cta-banner{
+  border-radius:var(--radius-lg);
+  background:
+    radial-gradient(700px 300px at 90% 0%, rgba(47,178,142,.35), transparent 65%),
+    linear-gradient(120deg, var(--navy-950), var(--navy-800));
+  padding:64px var(--edge);
+  display:flex;align-items:center;justify-content:space-between;gap:40px;
+  flex-wrap:wrap;
+  color:var(--white);
+}
+.cta-banner h2{max-width:520px;margin-bottom:10px}
+.cta-banner p{color:var(--ink-mist)}
+.cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer{background:var(--navy-950);color:rgba(255,255,255,.6);padding-top:76px}
+.footer-top{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+  padding-bottom:56px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.footer-brand .brand{margin-bottom:16px}
+.footer-brand p{max-width:30ch;line-height:1.6;font-size:.92rem}
+.footer-col h4{
+  color:var(--white);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+  font-family:var(--f-mono);font-weight:500;margin-bottom:18px;
+}
+.footer-col ul{display:flex;flex-direction:column;gap:12px}
+.footer-col a{font-size:.92rem;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{
+  padding-block:26px;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  font-size:.8rem;
+}
+.footer-bottom .disclaimer{max-width:640px;line-height:1.6}
+
+@media (max-width: 900px){
+  .hero-grid{grid-template-columns:1fr;text-align:left}
+  .hero-visual{order:-1;margin-bottom:20px}
+  .problem{grid-template-columns:1fr}
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+  .safety-grid{grid-template-columns:1fr}
+  .impact{grid-template-columns:1fr}
+  .impact-cell{border-right:none;border-bottom:1px solid var(--line)}
+  .impact-cell:last-child{border-bottom:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 600px){
+  .feature-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .step{grid-template-columns:44px 1fr;padding-inline:20px}
+  .cta-banner{padding:44px 24px}
+}
+
+/* ==========================================================================
+   Reveal-on-scroll
+   ========================================================================== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+.reveal-stagger.is-visible > *{opacity:1;transform:none}
+.reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease), transform .6s var(--ease)}
+.reveal-stagger > *:nth-child(1){transition-delay:.02s}
+.reveal-stagger > *:nth-child(2){transition-delay:.09s}
+.reveal-stagger > *:nth-child(3){transition-delay:.16s}
+.reveal-stagger > *:nth-child(4){transition-delay:.23s}
+.reveal-stagger > *:nth-child(5){transition-delay:.30s}
+.reveal-stagger > *:nth-child(6){transition-delay:.37s}
+
+/* ==========================================================================
+   Page hero (secondary pages: investors / legal)
+   ========================================================================== */
+.page-hero{
+  background:linear-gradient(180deg, var(--navy-950), var(--navy-900));
+  color:var(--white);
+  padding-top:168px;
+  padding-bottom:76px;
+}
+.page-hero .h-hero{font-size:clamp(2.3rem,4.6vw,3.4rem)}
+.page-hero .lede{margin-top:18px}
+.page-hero .meta{
+  margin-top:26px;font-family:var(--f-mono);font-size:.82rem;color:var(--ink-mist);
+}
+
+/* ==========================================================================
+   Investors specifics
+   ========================================================================== */
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pillar{
+  border:1px solid var(--line);border-radius:var(--radius-md);
+  padding:30px;background:var(--white);
+}
+.pillar .idx{font-family:var(--f-mono);color:var(--teal-500);font-size:.85rem;margin-bottom:14px;display:block}
+.pillar h3{margin-bottom:10px}
+.pillar p{color:var(--ink-500);line-height:1.6;font-size:.95rem}
+
+.timeline{border-left:2px solid var(--line);padding-left:30px;display:flex;flex-direction:column;gap:34px}
+.timeline-item{position:relative}
+.timeline-item::before{
+  content:"";position:absolute;left:-36.5px;top:4px;
+  width:11px;height:11px;border-radius:50%;background:var(--teal-500);
+  box-shadow:0 0 0 4px var(--teal-tint);
+}
+.timeline-item h3{margin-bottom:8px;font-size:1.05rem}
+.timeline-item p{color:var(--ink-500);font-size:.94rem;line-height:1.6;max-width:56ch}
+
+/* ==========================================================================
+   Legal pages
+   ========================================================================== */
+.legal-layout{display:grid;grid-template-columns:240px 1fr;gap:60px;align-items:start}
+.legal-toc{position:sticky;top:120px;display:flex;flex-direction:column;gap:2px}
+.legal-toc a{
+  font-size:.88rem;color:var(--ink-500);padding:9px 14px;border-radius:10px;
+  border-left:2px solid transparent;transition:.2s;
+}
+.legal-toc a:hover{color:var(--ink-900);background:var(--paper-alt)}
+.legal-toc a.is-active{color:var(--teal-600);border-left-color:var(--teal-500);background:var(--teal-tint)}
+
+.legal-body{max-width:74ch}
+.legal-body section{margin-bottom:52px;scroll-margin-top:120px}
+.legal-body h2{
+  font-size:1.35rem;margin-bottom:16px;
+  display:flex;align-items:baseline;gap:12px;
+}
+.legal-body h2 .num{font-family:var(--f-mono);color:var(--teal-500);font-size:1rem}
+.legal-body p{color:var(--ink-700);line-height:1.75;margin-bottom:16px;font-size:1rem}
+.legal-body ul{margin-bottom:16px;padding-left:0}
+.legal-body ul li{
+  color:var(--ink-700);line-height:1.7;padding-left:26px;position:relative;margin-bottom:10px;
+}
+.legal-body ul li::before{
+  content:"";position:absolute;left:4px;top:.65em;width:6px;height:6px;border-radius:50%;background:var(--teal-500);
+}
+.legal-body a{color:var(--teal-600);text-decoration:underline;text-underline-offset:3px}
+.legal-body strong{color:var(--ink-900)}
+
+.legal-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:.92rem}
+.legal-table th,.legal-table td{
+  text-align:left;padding:14px 16px;border:1px solid var(--line);vertical-align:top;line-height:1.6;
+}
+.legal-table th{background:var(--paper-alt);font-family:var(--f-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-700)}
+.legal-table td{color:var(--ink-700)}
+
+.legal-note{
+  background:var(--teal-tint);border-radius:14px;padding:20px 24px;
+  font-size:.92rem;color:var(--teal-600);line-height:1.6;margin-bottom:16px;
+}
+
+@media (max-width: 900px){
+  .legal-layout{grid-template-columns:1fr}
+  .legal-toc{position:static;flex-direction:row;flex-wrap:wrap;gap:8px}
+  .pillars{grid-template-columns:1fr}
+}
+
+
+/* App download badges */
+.store-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.store-badge{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:7px 12px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.store-badge:hover{transform:translateY(-2px);border-color:rgba(127,214,187,.65);background:rgba(255,255,255,.11)}
+.store-badge svg{width:22px;height:22px;fill:currentColor;flex:none}
+.store-badge span{display:flex;flex-direction:column;line-height:1}
+.store-badge small{font-size:.48rem;letter-spacing:.06em;opacity:.75;margin-bottom:3px}
+.store-badge strong{font-family:var(--f-display);font-size:.85rem;font-weight:600}
+.hero-store-links{margin-bottom:44px}
+.hero-store-links .store-badge{min-height:48px;padding:8px 14px}
+@media(max-width:520px){.store-links{width:100%}.store-badge{flex:1;justify-content:center}}
+
+
+/* ==========================================================================
+   Sticky mobile download bar
+   ========================================================================== */
+.mobile-download-bar{
+  display:none;
+  position:fixed;inset-inline:0;bottom:0;z-index:90;
+  align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 18px;
+  background:rgba(8,20,34,.92);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.mobile-download-bar .mdb-label{display:flex;align-items:center;gap:10px;color:#fff}
+.mobile-download-bar .mdb-label img{width:30px;height:30px;border-radius:8px;flex:none}
+.mobile-download-bar .mdb-label span{font-size:.82rem;line-height:1.25}
+.mobile-download-bar .mdb-label b{display:block;font-family:var(--f-display);font-size:.92rem}
+.mobile-download-bar .mdb-actions{display:flex;gap:8px;flex:none}
+.mdb-icon{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--teal-500);color:#fff;flex:none;
+}
+.mdb-icon svg{width:20px;height:20px}
+.mdb-icon.mdb-outline{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+@media (max-width: 640px){
+  .mobile-download-bar{display:flex}
+  body{padding-bottom:76px}
+}
+
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="index.html" class="brand">
+    <img src="assets/logo.png" alt="TrustRoute logo">
+    <span class="brand-word">Trust<b>Route</b></span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="index.html#how-it-works">How it works</a>
+    <a href="index.html#safety">Safety</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="investors.html">Investors</a>
+    <a href="blog.html">Blog</a>
+    <a href="privacy.html" class="is-active">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+  <div class="nav-right">
+    <div class="store-links" aria-label="Download TrustRoute">
+  <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.emergent.verifiedcommute.kr5l3d&hl=en_IN" target="_blank" rel="noopener" aria-label="Get TrustRoute on Google Play" title="Get it on Google Play">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 2.6c-.2.3-.3.7-.3 1.2v16.4c0 .5.1.9.3 1.2L13.1 12 3.2 2.6zM14.1 12.9l2.7 2.7-10.7 6.1L14.1 12.9zM14.1 11.1L6.1 2.3l10.7 6.1-2.7 2.7zM18 9.3l2.4 1.4c.8.5.8 1.2 0 1.7L18 13.8 15.1 12 18 9.3z"/></svg>
+    <span><small>GET IT ON</small><strong>Google Play</strong></span>
+  </a>
+  <a class="store-badge" href="index.html#download" aria-label="App Store — coming soon" title="App Store — coming soon" data-app-store-placeholder="true">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.2.7 1.1 1.6 2.2 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.4 0 1.8.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.9zM15 5.9c.6-.8 1-1.9.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2z"/></svg>
+    <span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span>
+  </a>
+</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow on-dark">Legal</span>
+    <h1 class="h-hero" style="margin-top:18px;">Privacy Policy</h1>
+    <p class="lede">What TrustRoute collects, why, and how it's protected.</p>
+    <p class="meta">Governing document: TrustRoute Privacy Policy · India</p>
+  </div>
+</section>
+
+<section class="section section--light">
+  <div class="wrap legal-layout">
+
+    <nav class="legal-toc">
+      <a href="#collect">1. Information we collect</a>
+      <a href="#use">2. How we use it</a>
+      <a href="#share">3. Who we share data with</a>
+      <a href="#retention">4. Data retention</a>
+      <a href="#security">5. Data security</a>
+      <a href="#rights">6. Your rights &amp; deletion</a>
+      <a href="#children">7. Children's privacy</a>
+      <a href="#compliance">8. Compliance</a>
+      <a href="#changes">9. Changes to this policy</a>
+      <a href="#contact">10. Contact us</a>
+    </nav>
+
+    <div class="legal-body">
+
+      <p style="margin-bottom:44px;">This Privacy Policy explains what information TrustRoute collects, why, and how it's protected. By using TrustRoute, you agree to the practices described here, in addition to our <a href="terms.html">Terms &amp; Conditions</a>.</p>
+
+      <section id="collect">
+        <h2><span class="num">1.</span> Information We Collect</h2>
+        <p>To provide a verified, safe carpooling experience, TrustRoute collects the following:</p>
+        <table class="legal-table">
+          <thead>
+            <tr><th>Category</th><th>What's collected</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Identity</td><td>Full name, phone number, official email address</td><td>Account creation and contact</td></tr>
+            <tr><td>Government ID</td><td>Aadhaar details, verified via a licensed third-party eKYC provider</td><td>Identity verification, so every member is a real, verified person</td></tr>
+            <tr><td>Driving credentials</td><td>Driving licence and vehicle RC (car owners only)</td><td>Verifying the vehicle and driver offering a ride</td></tr>
+            <tr><td>Profile</td><td>Photo, gender, employer (from verified email domain)</td><td>Trust signals shown to other users, and women-only ride matching</td></tr>
+            <tr><td>Location</td><td>Pickup/drop points you enter, and route data during an active trip</td><td>Route search, ETA calculation, and live trip sharing (only during a trip you choose to share)</td></tr>
+            <tr><td>Payment</td><td>Your UPI ID (VPA)</td><td>Displayed to a confirmed rider/owner so payment can be made directly — TrustRoute never processes or holds this payment</td></tr>
+            <tr><td>Usage &amp; device data</td><td>App activity, device identifiers, crash logs</td><td>Keeping the app secure and working correctly</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="use">
+        <h2><span class="num">2.</span> How We Use Your Information</h2>
+        <ul>
+          <li>To verify your identity before you can post or book a ride</li>
+          <li>To match you with relevant rides on your route</li>
+          <li>To calculate fares, ETAs, and pickup points</li>
+          <li>To enable safety features — SOS alerts, live trip sharing, and reliability scores</li>
+          <li>To detect fraud, fake profiles, or misuse of the platform</li>
+          <li>To communicate booking updates, verification status, and important account notices</li>
+        </ul>
+        <p class="legal-note">We do <strong>not</strong> sell your personal data to advertisers or third parties.</p>
+      </section>
+
+      <section id="share">
+        <h2><span class="num">3.</span> Who We Share Data With</h2>
+        <p>TrustRoute shares limited data with the following categories of service providers, only as needed to operate the app:</p>
+        <ul>
+          <li><strong>Licensed eKYC provider</strong> — to verify your Aadhaar, licence, and RC details. Your raw Aadhaar number is never stored by TrustRoute; only a verification result is retained.</li>
+          <li><strong>Google Maps Platform</strong> — to power location search, route calculation, and ETAs.</li>
+          <li><strong>Firebase (Google)</strong> — to deliver phone verification codes and push notifications.</li>
+          <li><strong>Other TrustRoute users</strong> — your name, photo, verification badges, rating, and reliability score are visible to other users to support trust decisions before booking. Your phone number and UPI ID are only shared with a user once a booking is confirmed between you.</li>
+        </ul>
+      </section>
+
+      <section id="retention">
+        <h2><span class="num">4.</span> Data Retention</h2>
+        <p>We retain your account and trip data for as long as your account is active, and for a reasonable period afterward to meet legal, safety, and dispute-resolution needs. You can request account deletion at any time (see Section 6).</p>
+      </section>
+
+      <section id="security">
+        <h2><span class="num">5.</span> Data Security</h2>
+        <p>We use industry-standard measures to protect your data, including encrypted storage of sensitive credentials and restricted access to identity verification data. No system is completely secure, and we continuously work to strengthen these protections.</p>
+      </section>
+
+      <section id="rights">
+        <h2><span class="num">6.</span> Your Rights &amp; Account Deletion</h2>
+        <p>You can request to access, correct, or delete your personal data at any time. Account deletion is available directly within the app, or by contacting us at the email below. Deleting your account removes your profile and personal data from active use, subject to any records we're legally required to retain.</p>
+      </section>
+
+      <section id="children">
+        <h2><span class="num">7.</span> Children's Privacy</h2>
+        <p>TrustRoute is intended for users aged 18 and above and is not directed at children. We do not knowingly collect data from anyone under 18.</p>
+      </section>
+
+      <section id="compliance">
+        <h2><span class="num">8.</span> Compliance</h2>
+        <p>TrustRoute processes personal data in accordance with the Digital Personal Data Protection Act, 2023, and identity verification is conducted through a licensed provider in compliance with the Aadhaar Act.</p>
+      </section>
+
+      <section id="changes">
+        <h2><span class="num">9.</span> Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Continued use of TrustRoute after an update constitutes acceptance of the revised policy.</p>
+      </section>
+
+      <section id="contact">
+        <h2><span class="num">10.</span> Contact Us</h2>
+        <p>For any privacy questions, or to request access, correction, or deletion of your data, contact: <a href="mailto:hello@trustroute.app">hello@trustroute.app</a></p>
+      </section>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="brand"><img src="assets/logo.png" alt="TrustRoute logo"><span class="brand-word" style="color:#fff">Trust<b>Route</b></span></a>
+      <p>Verified people. Trusted rides. A carpool network built for the daily office commute.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="index.html#how-it-works">How it works</a></li>
+        <li><a href="index.html#safety">Safety &amp; verification</a></li>
+        <li><a href="investors.html">For investors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms &amp; conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@trustroute.app">hello@trustroute.app</a></li>
+        <li><span>India</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p class="disclaimer">TrustRoute is a platform that connects verified individuals travelling the same commute route to arrange carpooling on a cost-sharing basis. It is not a transport operator, taxi service, or aggregator cab service.</p>
+    <p>© 2026 TrustRoute. All rights reserved.</p>
+  </div>
+</footer>
+<div class="mobile-download-bar">
+  <a href="index.html#download" class="mdb-label" aria-label="Go to download section">
+    <img src="assets/logo.png" alt="">
+    <span><b>Get TrustRoute</b>Free · Aadhaar-verified</span>
+  </a>
+  <div class="mdb-actions">
+    <a class="mdb-icon" href="https://play.google.com/store/apps/details?id=com.emergent.verifiedcommute.kr5l3d&hl=en_IN" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.2 2.6c-.2.3-.3.7-.3 1.2v16.4c0 .5.1.9.3 1.2L13.1 12 3.2 2.6zM14.1 12.9l2.7 2.7-10.7 6.1L14.1 12.9zM14.1 11.1L6.1 2.3l10.7 6.1-2.7 2.7zM18 9.3l2.4 1.4c.8.5.8 1.2 0 1.7L18 13.8 15.1 12 18 9.3z"/></svg>
+    </a>
+    <a class="mdb-icon mdb-outline" href="index.html#download" aria-label="App Store — coming soon">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.2.7 1.1 1.6 2.2 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.4 0 1.8.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.9zM15 5.9c.6-.8 1-1.9.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2z"/></svg>
+    </a>
+  </div>
+</div>
+
+
+<script>
+// TrustRoute — shared interactions
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---- Nav: solid on scroll ---- */
+  const nav = document.querySelector('.nav');
+  const onScroll = () => {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---- Mobile nav toggle ---- */
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }));
+  }
+
+  /* ---- Scroll reveal ---- */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  /* ---- Legal page: scroll-spy table of contents ---- */
+  const tocLinks = document.querySelectorAll('.legal-toc a');
+  const sections = document.querySelectorAll('.legal-body section[id]');
+  if (tocLinks.length && sections.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const link = document.querySelector(`.legal-toc a[href="#${entry.target.id}"]`);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('is-active'));
+          link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    sections.forEach(s => spy.observe(s));
+  }
+
+});
+
+</script>
+</body>
+</html>
