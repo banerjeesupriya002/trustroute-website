@@ -108,7 +108,17 @@ Return ONLY JSON with:
 {
   "title": "working title",
   "angle": "why this topic is timely/useful",
-  "category": "one concise category",
+  "category": "choose exactly one category from: Carpooling, Traffic & Commuting, Women's Safety, Corporate Mobility, Road Safety, Sustainable Mobility, Commuter Insights",
+  CATEGORY RULE:
+Never invent, modify, abbreviate, or create a new category.
+The category MUST be exactly one of:
+- Carpooling
+- Traffic & Commuting
+- Women's Safety
+- Corporate Mobility
+- Road Safety
+- Sustainable Mobility
+- Commuter Insights
   "reason": "why this is the best topic today",
   "source_urls": ["credible URL", "credible URL"]
 }
@@ -156,6 +166,7 @@ ${topic.angle}
 
 Category:
 ${topic.category}
+The category has already been selected from TrustRoute's approved category list. Preserve it exactly. Do not rename or invent a different category.
 
 Why selected:
 ${topic.reason}
