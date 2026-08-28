@@ -6,12 +6,133 @@ const apiKey = process.env.OPENAI_API_KEY;
 const model = process.env.OPENAI_MODEL || "gpt-5.6-terra";
 const minQualityScore = 82;
 
+/* =========================================================
+   APPROVED TRUSTROUTE CATEGORIES
+   ========================================================= */
+
+const APPROVED_CATEGORIES = [
+  "Carpooling",
+  "Traffic & Commuting",
+  "Women's Safety",
+  "Corporate Mobility",
+  "Road Safety",
+  "Sustainable Mobility",
+  "Commuter Insights"
+];
+
+/*
+ * Normalize any accidental/legacy category returned by AI.
+ *
+ * IMPORTANT:
+ * The website must ONLY receive one of the approved
+ * TrustRoute categories above.
+ */
+function normalizeCategory(category) {
+  const value = String(category || "").trim();
+
+  /* Already correct */
+  if (APPROVED_CATEGORIES.includes(value)) {
+    return value;
+  }
+
+  const lower = value.toLowerCase();
+
+  /* Corporate / employer / workplace related */
+  if (
+    lower.includes("employer") ||
+    lower.includes("workplace") ||
+    lower.includes("corporate") ||
+    lower.includes("employee") ||
+    lower.includes("office mobility") ||
+    lower.includes("employee mobility")
+  ) {
+    return "Corporate Mobility";
+  }
+
+  /* Women's safety */
+  if (
+    lower.includes("women") ||
+    lower.includes("female commuter") ||
+    lower.includes("women's")
+  ) {
+    return "Women's Safety";
+  }
+
+  /* Road safety */
+  if (
+    lower.includes("road safety") ||
+    lower.includes("road-safety") ||
+    lower.includes("driving safety") ||
+    lower.includes("traffic safety") ||
+    lower.includes("accident")
+  ) {
+    return "Road Safety";
+  }
+
+  /* Sustainable mobility */
+  if (
+    lower.includes("sustain") ||
+    lower.includes("sustainable") ||
+    lower.includes("carbon") ||
+    lower.includes("emission") ||
+    lower.includes("ev ") ||
+    lower === "ev" ||
+    lower.includes("electric vehicle")
+  ) {
+    return "Sustainable Mobility";
+  }
+
+  /* Carpooling */
+  if (
+    lower.includes("carpool") ||
+    lower.includes("car pool") ||
+    lower.includes("shared ride") ||
+    lower.includes("shared rides") ||
+    lower.includes("ride sharing") ||
+    lower.includes("ridesharing")
+  ) {
+    return "Carpooling";
+  }
+
+  /* Traffic / commuting */
+  if (
+    lower.includes("traffic") ||
+    lower.includes("congestion") ||
+    lower.includes("commut") ||
+    lower.includes("parking")
+  ) {
+    return "Traffic & Commuting";
+  }
+
+  /*
+   * Safe fallback.
+   *
+   * Never allow an unknown category to reach the website.
+   */
+  return "Commuter Insights";
+}
+
+
+/* =========================================================
+   ENVIRONMENT CHECK
+   ========================================================= */
+
 if (!apiKey) {
   throw new Error("OPENAI_API_KEY GitHub secret is required.");
 }
 
+
+/* =========================================================
+   LOAD POSTS
+   ========================================================= */
+
 const postsPath = path.join(ROOT, "blog", "posts.json");
 const posts = JSON.parse(await fs.readFile(postsPath, "utf8"));
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
 
 function istDate() {
   return new Intl.DateTimeFormat("en-CA", {
@@ -24,10 +145,20 @@ function istDate() {
 
 const today = istDate();
 
+
+/* =========================================================
+   PREVENT DUPLICATE DAILY POST
+   ========================================================= */
+
 if (posts.some(p => p.date === today)) {
   console.log(`A post for ${today} already exists.`);
   process.exit(0);
 }
+
+
+/* =========================================================
+   RECENT ARTICLE HISTORY
+   ========================================================= */
 
 const recentHistory = posts.slice(0, 60).map(p => ({
   date: p.date,
@@ -35,6 +166,11 @@ const recentHistory = posts.slice(0, 60).map(p => ({
   category: p.category,
   excerpt: p.excerpt
 }));
+
+
+/* =========================================================
+   EDITORIAL PILLARS
+   ========================================================= */
 
 const editorialPillars = [
   "Why India needs practical carpooling and shared commuting",
@@ -48,6 +184,11 @@ const editorialPillars = [
   "Public transport gaps, first/last-mile connectivity and multimodal commuting",
   "Relevant Indian mobility policy, infrastructure and urban-development changes"
 ];
+
+
+/* =========================================================
+   TOPIC SELECTION PROMPT
+   ========================================================= */
 
 const topicPrompt = `
 You are TrustRoute's autonomous editorial strategist for India.
@@ -103,15 +244,10 @@ RECENT TRUSTROUTE ARTICLES:
 
 ${JSON.stringify(recentHistory)}
 
-Return ONLY JSON with:
+CATEGORY RULE
 
-{
-  "title": "working title",
-  "angle": "why this topic is timely/useful",
-  "category": "choose exactly one category from: Carpooling, Traffic & Commuting, Women's Safety, Corporate Mobility, Road Safety, Sustainable Mobility, Commuter Insights",
-  CATEGORY RULE:
-Never invent, modify, abbreviate, or create a new category.
-The category MUST be exactly one of:
+The category MUST be exactly ONE of these seven values:
+
 - Carpooling
 - Traffic & Commuting
 - Women's Safety
@@ -119,10 +255,28 @@ The category MUST be exactly one of:
 - Road Safety
 - Sustainable Mobility
 - Commuter Insights
+
+NEVER create, invent, abbreviate, modify, rename or use any other category.
+
+For employer, workplace, employee transportation, corporate commute, office mobility or business mobility topics, use:
+
+Corporate Mobility
+
+Return ONLY JSON with:
+
+{
+  "title": "working title",
+  "angle": "why this topic is timely/useful",
+  "category": "one approved TrustRoute category",
   "reason": "why this is the best topic today",
   "source_urls": ["credible URL", "credible URL"]
 }
 `;
+
+
+/* =========================================================
+   SELECT TOPIC
+   ========================================================= */
 
 const topic = await callOpenAI({
   model,
@@ -134,15 +288,31 @@ const topic = await callOpenAI({
     type: "object",
     additionalProperties: false,
     properties: {
-      title: { type: "string" },
-      angle: { type: "string" },
-      category: { type: "string" },
-      reason: { type: "string" },
+      title: {
+        type: "string"
+      },
+
+      angle: {
+        type: "string"
+      },
+
+      category: {
+        type: "string",
+        enum: APPROVED_CATEGORIES
+      },
+
+      reason: {
+        type: "string"
+      },
+
       source_urls: {
         type: "array",
-        items: { type: "string" }
+        items: {
+          type: "string"
+        }
       }
     },
+
     required: [
       "title",
       "angle",
@@ -152,6 +322,20 @@ const topic = await callOpenAI({
     ]
   }
 });
+
+
+/*
+ * HARD SAFETY CHECK
+ *
+ * Even though the schema already restricts the category,
+ * normalize it before sending it to the writer.
+ */
+topic.category = normalizeCategory(topic.category);
+
+
+/* =========================================================
+   WRITER PROMPT
+   ========================================================= */
 
 const writerPrompt = `
 You are the senior writer for TrustRoute Journal, an India-focused mobility publication.
@@ -166,7 +350,13 @@ ${topic.angle}
 
 Category:
 ${topic.category}
-The category has already been selected from TrustRoute's approved category list. Preserve it exactly. Do not rename or invent a different category.
+
+The category has already been selected from TrustRoute's approved category list.
+
+Preserve it exactly.
+
+Do not rename it.
+Do not invent another category.
 
 Why selected:
 ${topic.reason}
@@ -225,8 +415,19 @@ STYLE
 - Finish with a useful takeaway and a restrained TrustRoute connection.
 - Do not finish with a hard sales pitch.
 
+CATEGORY
+
+The final category must remain exactly:
+
+${topic.category}
+
 Return ONLY the requested JSON.
 `;
+
+
+/* =========================================================
+   WRITE ARTICLE
+   ========================================================= */
 
 const draft = await callOpenAI({
   model,
@@ -236,6 +437,11 @@ const draft = await callOpenAI({
   schemaName: "trustroute_blog_draft",
   schema: blogSchema()
 });
+
+
+/* =========================================================
+   FINAL EDITOR PROMPT
+   ========================================================= */
 
 const editorPrompt = `
 You are the final fact-checking editor for TrustRoute Journal.
@@ -266,6 +472,32 @@ A GOOD ARTICLE MUST:
 
 ${JSON.stringify(recentHistory.slice(0, 30))}
 
+CATEGORY RULE
+
+The article category MUST be exactly ONE of:
+
+- Carpooling
+- Traffic & Commuting
+- Women's Safety
+- Corporate Mobility
+- Road Safety
+- Sustainable Mobility
+- Commuter Insights
+
+NEVER create or return:
+
+- Employer Mobility
+- Workplace Mobility
+- Employee Mobility
+- Office Mobility
+- Shared Mobility
+- Urban Mobility
+- any other category
+
+If the article concerns employers, workplaces, employee transportation, corporate commute or business mobility, the correct category is:
+
+Corporate Mobility
+
 If any key claim cannot be verified, rewrite it conservatively or remove it.
 
 If the topic itself has become unsuitable or unverifiable, set publish=false.
@@ -281,6 +513,11 @@ Return the corrected final article in the same schema plus:
 - editor_notes: short string
 `;
 
+
+/* =========================================================
+   FINAL EDITOR
+   ========================================================= */
+
 const edited = await callOpenAI({
   model,
   apiKey,
@@ -290,22 +527,45 @@ const edited = await callOpenAI({
   schema: {
     type: "object",
     additionalProperties: false,
+
     properties: {
-      title: { type: "string" },
-      category: { type: "string" },
-      excerpt: { type: "string" },
-      body_html: { type: "string" },
+      title: {
+        type: "string"
+      },
+
+      category: {
+        type: "string",
+        enum: APPROVED_CATEGORIES
+      },
+
+      excerpt: {
+        type: "string"
+      },
+
+      body_html: {
+        type: "string"
+      },
 
       sources: {
         type: "array",
         items: {
           type: "object",
           additionalProperties: false,
+
           properties: {
-            title: { type: "string" },
-            url: { type: "string" }
+            title: {
+              type: "string"
+            },
+
+            url: {
+              type: "string"
+            }
           },
-          required: ["title", "url"]
+
+          required: [
+            "title",
+            "url"
+          ]
         }
       },
 
@@ -315,9 +575,13 @@ const edited = await callOpenAI({
         maximum: 100
       },
 
-      publish: { type: "boolean" },
+      publish: {
+        type: "boolean"
+      },
 
-      editor_notes: { type: "string" }
+      editor_notes: {
+        type: "string"
+      }
     },
 
     required: [
@@ -333,15 +597,40 @@ const edited = await callOpenAI({
   }
 });
 
+
+/*
+ * FINAL HARD CATEGORY ENFORCEMENT
+ *
+ * This is the last protection before anything is written
+ * to posts.json or published to the website.
+ */
+edited.category = normalizeCategory(edited.category);
+
+
+/* =========================================================
+   EDITORIAL QUALITY GATE
+   ========================================================= */
+
 if (!edited.publish || edited.quality_score < minQualityScore) {
   throw new Error(
     `Editorial gate blocked publication. score=${edited.quality_score}; publish=${edited.publish}; notes=${edited.editor_notes}`
   );
 }
 
+
 const post = edited;
 
+
+/* =========================================================
+   SLUG
+   ========================================================= */
+
 const slug = `${slugify(post.title)}-${today}`;
+
+
+/* =========================================================
+   ARTICLE PATH
+   ========================================================= */
 
 const articlePath = path.join(
   ROOT,
@@ -349,15 +638,29 @@ const articlePath = path.join(
   `${slug}.html`
 );
 
+
+/* =========================================================
+   ARTICLE HTML
+   ========================================================= */
+
 const articleHtml = `<!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
 
 <title>${escapeHtml(post.title)} — TrustRoute</title>
 
-<meta name="description" content="${escapeHtml(post.excerpt)}">
+<meta
+  name="description"
+  content="${escapeHtml(post.excerpt)}"
+>
 
 <link
   rel="canonical"
@@ -416,8 +719,14 @@ const articleHtml = `<!doctype html>
 
 <header class="article-nav">
 
-  <a href="../index.html" class="brand">
-    <img src="../assets/logo.png" alt="">
+  <a
+    href="../index.html"
+    class="brand"
+  >
+    <img
+      src="../assets/logo.png"
+      alt=""
+    >
     Trust<b>Route</b>
   </a>
 
@@ -427,13 +736,16 @@ const articleHtml = `<!doctype html>
 
 </header>
 
+
 <main class="article">
 
   <div class="eyebrow">
     ${escapeHtml(post.category)} · ${today}
   </div>
 
-  <h1>${escapeHtml(post.title)}</h1>
+  <h1>
+    ${escapeHtml(post.title)}
+  </h1>
 
   <p class="dek">
     ${escapeHtml(post.excerpt)}
@@ -442,6 +754,7 @@ const articleHtml = `<!doctype html>
   <article>
     ${post.body_html}
   </article>
+
 
   <div class="sources">
 
@@ -468,6 +781,7 @@ const articleHtml = `<!doctype html>
 
   </div>
 
+
   <div class="back">
 
     <a href="../blog.html">
@@ -479,18 +793,36 @@ const articleHtml = `<!doctype html>
 </main>
 
 </body>
+
 </html>`;
+
+
+/* =========================================================
+   ENSURE BLOG DIRECTORY
+   ========================================================= */
 
 await fs.mkdir(
   path.join(ROOT, "blog"),
-  { recursive: true }
+  {
+    recursive: true
+  }
 );
+
+
+/* =========================================================
+   WRITE ARTICLE
+   ========================================================= */
 
 await fs.writeFile(
   articlePath,
   articleHtml,
   "utf8"
 );
+
+
+/* =========================================================
+   UPDATE POSTS.JSON
+   ========================================================= */
 
 posts.unshift({
   date: today,
@@ -501,19 +833,31 @@ posts.unshift({
   sources: post.sources
 });
 
+
 await fs.writeFile(
   postsPath,
   JSON.stringify(posts.slice(0, 60), null, 2),
   "utf8"
 );
 
+
+/* =========================================================
+   UPDATE SITEMAP
+   ========================================================= */
+
 await updateSitemap(posts);
+
+
+/* =========================================================
+   SUCCESS LOG
+   ========================================================= */
 
 console.log(
   JSON.stringify({
     published: true,
     title: post.title,
     slug,
+    category: post.category,
     quality_score: edited.quality_score,
     date: today
   })
@@ -566,13 +910,16 @@ async function callOpenAI({
     }
   );
 
+
   if (!response.ok) {
     throw new Error(
       `OpenAI API error: ${await response.text()}`
     );
   }
 
+
   const data = await response.json();
+
 
   /*
    * IMPORTANT FIX
@@ -592,6 +939,7 @@ async function callOpenAI({
 
   const text = extractResponseText(data);
 
+
   if (!text) {
 
     const outputTypes =
@@ -605,6 +953,7 @@ async function callOpenAI({
       `OpenAI returned no text content. output_types=${outputTypes}`
     );
   }
+
 
   try {
 
@@ -638,11 +987,13 @@ function extractResponseText(data) {
     return data.output_text.trim();
   }
 
+
   /*
    * Otherwise inspect the Responses API output.
    */
 
   const parts = [];
+
 
   for (const item of data?.output || []) {
 
@@ -657,6 +1008,7 @@ function extractResponseText(data) {
       }
     }
   }
+
 
   return parts.join("\n").trim();
 }
@@ -681,7 +1033,8 @@ function blogSchema() {
       },
 
       category: {
-        type: "string"
+        type: "string",
+        enum: APPROVED_CATEGORIES
       },
 
       excerpt: {
@@ -859,6 +1212,7 @@ async function updateSitemap(allPosts) {
 
   ];
 
+
   const xml =
 `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -870,6 +1224,7 @@ ${urls
   .join("\n")}
 </urlset>
 `;
+
 
   await fs.writeFile(
     path.join(ROOT, "sitemap.xml"),
