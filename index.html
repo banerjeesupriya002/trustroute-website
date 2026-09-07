@@ -500,6 +500,84 @@ h2{font-weight:600}
 }
 
 /* ==========================================================================
+   Commute safety check (quiz)
+   ========================================================================== */
+.quiz-card{
+  width:min(600px,100%);margin-inline:auto;
+  background:var(--navy-900);border-radius:var(--radius-lg);
+  border:1px solid rgba(255,255,255,.08);
+  padding:44px;overflow:hidden;
+}
+.quiz-progress{display:flex;gap:8px;margin-bottom:32px}
+.quiz-progress span{
+  flex:1;height:4px;border-radius:999px;background:rgba(255,255,255,.14);
+  overflow:hidden;position:relative;
+}
+.quiz-progress span::after{
+  content:"";position:absolute;inset:0;background:var(--teal-400);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);
+}
+.quiz-progress span.is-done::after{transform:scaleX(1)}
+.quiz-progress span.is-active::after{transform:scaleX(1)}
+
+.quiz-question{animation:quizIn .4s var(--ease) both}
+@keyframes quizIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
+.quiz-q-label{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-300);margin-bottom:14px;display:block}
+.quiz-q-text{font-family:var(--f-display);font-size:clamp(1.25rem,2.6vw,1.55rem);font-weight:600;color:#fff;line-height:1.4;margin:0 0 30px}
+.quiz-choices{display:flex;gap:14px}
+.quiz-choice{
+  flex:1;padding:1.1em 1em;border-radius:14px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.04);color:#fff;font-weight:600;font-size:1rem;
+  transition:all .25s var(--ease);
+}
+.quiz-choice:hover{border-color:rgba(127,214,187,.5);transform:translateY(-2px)}
+.quiz-choice:active{transform:translateY(0)}
+
+.quiz-results{animation:quizIn .5s var(--ease) both;text-align:center}
+.quiz-score-ring{position:relative;width:150px;height:150px;margin:0 auto 26px}
+.quiz-score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.quiz-ring-track{fill:none;stroke:rgba(255,255,255,.1);stroke-width:9}
+.quiz-ring-fill{
+  fill:none;stroke:var(--teal-400);stroke-width:9;stroke-linecap:round;
+  stroke-dasharray:326.7;stroke-dashoffset:326.7;
+  transition:stroke-dashoffset 1.1s var(--ease);
+}
+.quiz-score-label{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#fff;
+}
+.quiz-score-num{font-family:var(--f-display);font-size:2.4rem;font-weight:600;line-height:1}
+.quiz-score-label span:last-child{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-mist);margin-top:2px}
+.quiz-results h3{font-family:var(--f-display);font-size:1.3rem;color:#fff;margin:0 0 24px}
+.quiz-breakdown{list-style:none;padding:0;margin:0 0 32px;text-align:left;display:flex;flex-direction:column;gap:2px}
+.quiz-row{
+  display:flex;align-items:center;gap:14px;padding:14px 4px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.quiz-row:last-child{border-bottom:none}
+.quiz-row-icon{
+  width:26px;height:26px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+}
+.quiz-row-icon svg{width:14px;height:14px}
+.quiz-row.has-it .quiz-row-icon{background:var(--teal-tint);color:var(--teal-600)}
+.quiz-row.gap .quiz-row-icon{background:rgba(214,51,138,.16);color:var(--pink-500)}
+.quiz-row-text{flex:1}
+.quiz-row-text .quiz-row-label{color:#fff;font-weight:600;font-size:.94rem;display:block}
+.quiz-row-text .quiz-row-note{color:var(--ink-mist);font-size:.82rem;margin-top:2px}
+.quiz-results .btn{width:100%;justify-content:center}
+.quiz-retake{
+  display:block;margin:16px auto 0;background:none;border:none;color:var(--ink-mist);
+  font-size:.85rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer;
+}
+.quiz-retake:hover{color:#fff}
+
+@media (max-width:600px){
+  .quiz-card{padding:30px 24px}
+  .quiz-choices{flex-direction:column}
+}
+
+/* ==========================================================================
    Feature grid
    ========================================================================== */
 .feature-grid{
@@ -1121,6 +1199,87 @@ h2{font-weight:600}
   </div>
 </section>
 
+<!-- ============ COMMUTE SAFETY CHECK (QUIZ) ============ -->
+<section class="section--tight section--dark">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow on-dark">30-second check</span>
+      <h2 class="h-section">How does your current commute really measure up?</h2>
+      <p class="lede" style="margin-inline:auto">Five quick questions about how you get to work today — see the gaps, and what TrustRoute closes automatically.</p>
+    </div>
+
+    <div class="quiz-card reveal" id="quizCard">
+      <div class="quiz-progress" id="quizProgress">
+        <span class="is-active"></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div id="quizBody">
+        <div class="quiz-question" data-q="0">
+          <span class="quiz-q-label">Question 1 of 5</span>
+          <p class="quiz-q-text">Before you get in, do you know the driver's full name?</p>
+          <div class="quiz-choices">
+            <button type="button" class="quiz-choice" data-answer="yes">Yes, always</button>
+            <button type="button" class="quiz-choice" data-answer="no">Not really</button>
+          </div>
+        </div>
+
+        <div class="quiz-question" data-q="1" hidden>
+          <span class="quiz-q-label">Question 2 of 5</span>
+          <p class="quiz-q-text">Has the driver's licence and vehicle been checked by anyone other than the driver?</p>
+          <div class="quiz-choices">
+            <button type="button" class="quiz-choice" data-answer="yes">Yes</button>
+            <button type="button" class="quiz-choice" data-answer="no">No / not sure</button>
+          </div>
+        </div>
+
+        <div class="quiz-question" data-q="2" hidden>
+          <span class="quiz-q-label">Question 3 of 5</span>
+          <p class="quiz-q-text">Is your fare fixed in advance, with no negotiation once you're in the car?</p>
+          <div class="quiz-choices">
+            <button type="button" class="quiz-choice" data-answer="yes">Yes, fixed</button>
+            <button type="button" class="quiz-choice" data-answer="no">It varies</button>
+          </div>
+        </div>
+
+        <div class="quiz-question" data-q="3" hidden>
+          <span class="quiz-q-label">Question 4 of 5</span>
+          <p class="quiz-q-text">Can a friend or family member see your live location during the ride?</p>
+          <div class="quiz-choices">
+            <button type="button" class="quiz-choice" data-answer="yes">Yes</button>
+            <button type="button" class="quiz-choice" data-answer="no">No</button>
+          </div>
+        </div>
+
+        <div class="quiz-question" data-q="4" hidden>
+          <span class="quiz-q-label">Question 5 of 5</span>
+          <p class="quiz-q-text">If something felt wrong, could you instantly share exactly who you're riding with and where?</p>
+          <div class="quiz-choices">
+            <button type="button" class="quiz-choice" data-answer="yes">Yes, instantly</button>
+            <button type="button" class="quiz-choice" data-answer="no">It'd take a while</button>
+          </div>
+        </div>
+
+        <div class="quiz-results" id="quizResults" hidden>
+          <div class="quiz-score-ring">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="quiz-ring-track" cx="60" cy="60" r="52"></circle>
+              <circle class="quiz-ring-fill" id="quizRingFill" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="quiz-score-label">
+              <span class="quiz-score-num" id="quizScoreNum">0</span>
+              <span>of 5 checks</span>
+            </div>
+          </div>
+          <h3 id="quizResultTitle">Here's how your commute checks out</h3>
+          <ul class="quiz-breakdown" id="quizBreakdown"></ul>
+          <a class="btn btn--primary" href="#download">Get all 5, every ride — download TrustRoute</a>
+          <button type="button" class="quiz-retake" id="quizRetake">Retake the check</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FEATURE GRID ============ -->
 <section class="section section--light">
   <div class="wrap">
@@ -1582,6 +1741,100 @@ document.addEventListener('DOMContentLoaded', () => {
       update();
     });
     update();
+  }
+
+  /* ---- Commute safety check quiz ---- */
+  const quizCard = document.getElementById('quizCard');
+  if (quizCard) {
+    const questions = [
+      { label: 'Know your driver by name', note: 'Every profile shows a verified full name before you book.' },
+      { label: 'Licence & vehicle checked', note: 'Car owners verify their Driving Licence and Vehicle RC.' },
+      { label: 'Fixed fare, no haggling', note: 'A fare ladder sets the price per stop, in advance.' },
+      { label: 'Live location shared', note: 'Riders and owners can share live location on every trip.' },
+      { label: 'Instant driver ID in an emergency', note: 'Trip and driver details are always on record, instantly.' },
+    ];
+    const answers = [];
+    const quizBody = document.getElementById('quizBody');
+    const progressDots = quizCard.querySelectorAll('.quiz-progress span');
+    const resultsEl = document.getElementById('quizResults');
+    const ringFill = document.getElementById('quizRingFill');
+    const scoreNumEl = document.getElementById('quizScoreNum');
+    const breakdownEl = document.getElementById('quizBreakdown');
+    const retakeBtn = document.getElementById('quizRetake');
+    const reduceMotionQ = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const RING_CIRCUMFERENCE = 326.7;
+
+    function showQuestion(i) {
+      quizBody.querySelectorAll('.quiz-question').forEach((q) => {
+        q.hidden = parseInt(q.dataset.q, 10) !== i;
+      });
+      progressDots.forEach((d, idx) => {
+        d.classList.toggle('is-done', idx < i);
+        d.classList.toggle('is-active', idx === i);
+      });
+    }
+
+    function showResults() {
+      quizBody.querySelectorAll('.quiz-question').forEach((q) => { q.hidden = true; });
+      progressDots.forEach((d) => { d.classList.add('is-done'); d.classList.remove('is-active'); });
+      resultsEl.hidden = false;
+
+      const score = answers.filter((a) => a === 'yes').length;
+
+      breakdownEl.innerHTML = questions.map((q, idx) => {
+        const has = answers[idx] === 'yes';
+        const icon = has
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L19 7"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+        return `<li class="quiz-row ${has ? 'has-it' : 'gap'}">
+          <span class="quiz-row-icon">${icon}</span>
+          <span class="quiz-row-text">
+            <span class="quiz-row-label">${q.label}</span>
+            <span class="quiz-row-note">${has ? 'You already have this' : q.note}</span>
+          </span>
+        </li>`;
+      }).join('');
+
+      if (reduceMotionQ) {
+        scoreNumEl.textContent = score;
+        ringFill.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - score / 5);
+      } else {
+        requestAnimationFrame(() => {
+          ringFill.style.strokeDashoffset = RING_CIRCUMFERENCE * (1 - score / 5);
+        });
+        const start = performance.now();
+        const duration = 900;
+        function frame(now) {
+          const p = Math.min(1, (now - start) / duration);
+          scoreNumEl.textContent = Math.round(score * p);
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+    }
+
+    function reset() {
+      answers.length = 0;
+      resultsEl.hidden = true;
+      ringFill.style.strokeDashoffset = RING_CIRCUMFERENCE;
+      scoreNumEl.textContent = '0';
+      showQuestion(0);
+    }
+
+    quizBody.addEventListener('click', (e) => {
+      const btn = e.target.closest('.quiz-choice');
+      if (!btn) return;
+      const questionEl = btn.closest('.quiz-question');
+      const idx = parseInt(questionEl.dataset.q, 10);
+      answers[idx] = btn.dataset.answer;
+      if (idx < questions.length - 1) {
+        showQuestion(idx + 1);
+      } else {
+        showResults();
+      }
+    });
+
+    retakeBtn.addEventListener('click', reset);
   }
 
 });
