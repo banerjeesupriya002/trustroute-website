@@ -13,8 +13,10 @@
        <div class="sources">...</div>
        <div class="back">...</div>
      </main>
-   Do not assume wrapper elements (.article-shell, .article-head, .nav-links,
-   .all-insights) that the generator does not emit — style the real output.
+   These pages ship with NO JavaScript (the generator emits none but a JSON-LD
+   block) — every enhancement here must work as pure CSS on the structural
+   elements above. Do not assume wrapper elements (.article-shell,
+   .article-head, .nav-links, .all-insights) the generator does not emit.
    ========================================================================== */
 
 :root{
@@ -36,6 +38,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink-900);font-family:var(--f-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
+::selection{background:var(--teal-400);color:var(--navy-950)}
 
 /* ---- header (matches the generator's real, minimal markup) ---- */
 .article-nav{
@@ -62,60 +65,146 @@ img{max-width:100%;display:block}
 }
 .article-nav > a:not(.brand):hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06);transform:translateY(-1px)}
 
+/* graceful support for the richer nav pattern some earlier-generated posts use
+   (.brand-word span, .nav-links, .nav-right > .all-insights) — inert if absent */
+.article-nav .brand-word{font-family:var(--f-display);font-weight:600;font-size:1.08rem;color:var(--white);letter-spacing:-.01em}
+.article-nav .nav-links{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.article-nav .nav-links a{font-size:.86rem;color:rgba(255,255,255,.75);font-weight:500;transition:color .2s}
+.article-nav .nav-links a:hover,.article-nav .nav-links a.is-active{color:var(--white)}
+.article-nav .nav-right{display:flex;align-items:center;flex:none}
+.article-nav .all-insights{
+  display:inline-flex;align-items:center;gap:8px;flex:none;
+  border:1px solid rgba(255,255,255,.28);border-radius:999px;
+  padding:.6em 1.05em;font-size:.84rem;font-weight:600;color:var(--white);
+  font-family:var(--f-body);white-space:nowrap;
+  transition:transform .25s var(--ease),border-color .25s,background .25s;
+}
+.article-nav .all-insights:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06);transform:translateY(-1px)}
+@media (max-width:900px){
+  .article-nav .nav-links{display:none}
+}
+/* thin brand accent line under the sticky header, always present since there's no JS scroll-state here */
+.article-nav::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
+  background:linear-gradient(90deg,var(--teal-500),var(--teal-300),transparent 85%);
+}
+.article-nav{position:sticky}
+
 /* ---- article body ---- */
-main.article{width:min(760px,100%);margin:0 auto;padding:64px var(--edge) 100px}
+main.article{width:min(720px,100%);margin:0 auto;padding:64px var(--edge) 100px;position:relative}
 
 .eyebrow{
-  display:inline-flex;align-items:center;gap:.55em;
-  font:500 .72rem var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--teal-600);
+  display:inline-flex;align-items:center;gap:.6em;
+  background:var(--teal-tint);color:var(--teal-600);
+  padding:.45em 1em;border-radius:999px;
+  font:600 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;
 }
-.eyebrow::before{content:"";width:18px;height:1px;background:var(--teal-600);display:inline-block}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal-500);display:inline-block;flex:none}
 
 main.article h1{
-  font:600 clamp(2.1rem,4.6vw,3.2rem)/1.08 var(--f-display);
-  letter-spacing:-.02em;color:var(--ink-900);margin:20px 0 20px;
+  font:600 clamp(2.1rem,4.6vw,3.35rem)/1.08 var(--f-display);
+  letter-spacing:-.02em;color:var(--ink-900);margin:22px 0 20px;
 }
 main.article p.dek{
-  font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.65;color:var(--ink-500);
+  font-size:clamp(1.08rem,1.4vw,1.24rem);line-height:1.65;color:var(--ink-500);
   margin:0 0 40px;padding-bottom:36px;border-bottom:1px solid var(--line);
 }
 
-main.article > article{font-size:1.08rem;line-height:1.85;color:var(--ink-700)}
-main.article > article p{margin:0 0 24px}
-main.article > article h2{font:600 clamp(1.5rem,2.4vw,1.9rem)/1.2 var(--f-display);color:var(--ink-900);margin:44px 0 16px;letter-spacing:-.01em}
-main.article > article h3{font:600 1.22rem/1.3 var(--f-display);color:var(--ink-900);margin:32px 0 12px}
-main.article > article ul,main.article > article ol{padding-left:24px;margin:0 0 26px}
-main.article > article li{margin:0 0 10px;line-height:1.75}
-main.article > article a{color:var(--teal-600);text-decoration:underline;text-decoration-color:rgba(21,145,114,.35);text-underline-offset:3px}
-main.article > article blockquote{
-  margin:32px 0;padding:4px 0 4px 24px;border-left:3px solid var(--teal-400);
-  color:var(--ink-900);font-family:var(--f-display);font-size:1.2rem;line-height:1.5;font-weight:500;
+/* ---- body copy ---- */
+main.article{overflow-wrap:break-word;word-break:break-word}
+main.article > article{
+  font-size:1.09rem;line-height:1.85;color:var(--ink-700);
+  counter-reset:section;
 }
-main.article > article strong{color:var(--ink-900)}
-main.article > article img{border-radius:16px;margin:32px 0}
+main.article > article p{margin:0 0 26px}
+
+/* editorial lede: the first paragraph of the piece reads larger, with a drop cap */
+main.article > article > p:first-of-type{
+  font-size:1.24rem;line-height:1.72;color:var(--ink-900);
+}
+main.article > article > p:first-of-type::first-letter{
+  font-family:var(--f-display);font-weight:600;font-size:3.6em;line-height:.82;
+  float:left;padding:.04em .09em 0 0;color:var(--teal-600);
+}
+
+/* numbered section headings — pure CSS counters, no JS required */
+main.article > article h2{
+  display:flex;align-items:baseline;gap:16px;
+  font:600 clamp(1.45rem,2.3vw,1.85rem)/1.25 var(--f-display);color:var(--ink-900);
+  margin:56px 0 20px;letter-spacing:-.01em;
+  padding-top:32px;border-top:1px solid var(--line);
+  counter-increment:section;
+}
+main.article > article h2::before{
+  content:counter(section,decimal-leading-zero);
+  font-family:var(--f-mono);font-weight:500;font-size:.68em;color:var(--teal-500);
+  flex:none;letter-spacing:0;
+}
+/* the final h2 in the piece (almost always the takeaway/summary) gets a distinct, highlighted treatment */
+main.article > article h2:last-of-type{
+  background:var(--teal-tint);border-top:none;border-radius:16px;
+  padding:22px 24px;margin:56px 0 22px;
+}
+main.article > article h2:last-of-type::before{content:"—";font-size:1em;color:var(--teal-600)}
+
+main.article > article h3{font:600 1.2rem/1.35 var(--f-display);color:var(--ink-900);margin:34px 0 12px}
+main.article > article ul,main.article > article ol{padding-left:26px;margin:0 0 26px}
+main.article > article li{margin:0 0 11px;line-height:1.75}
+main.article > article li::marker{color:var(--teal-500)}
+main.article > article a{color:var(--teal-600);text-decoration:underline;text-decoration-color:rgba(21,145,114,.35);text-underline-offset:3px;transition:text-decoration-color .2s}
+main.article > article a:hover{text-decoration-color:currentColor}
+main.article > article strong{color:var(--ink-900);font-weight:600}
+
+/* pull-quote styling with a decorative quotation mark */
+main.article > article blockquote{
+  position:relative;margin:40px 0;padding:8px 32px 8px 56px;
+  color:var(--ink-900);font-family:var(--f-display);font-size:1.28rem;line-height:1.5;font-weight:500;
+}
+main.article > article blockquote::before{
+  content:"\201C";position:absolute;left:0;top:-.18em;
+  font-family:var(--f-display);font-size:3.2rem;font-weight:600;color:var(--teal-400);line-height:1;
+}
+main.article > article img{border-radius:16px;margin:36px 0;box-shadow:0 20px 44px -22px rgba(6,20,32,.3)}
 
 /* ---- sources ---- */
 .sources{
-  margin:52px 0 0;padding:26px 28px;border-radius:18px;
-  background:var(--teal-tint);color:var(--ink-700);font-size:.92rem;line-height:1.6;
+  margin:56px 0 0;padding:30px 30px 26px;border-radius:20px;
+  background:var(--white);border:1px solid var(--line);
+  color:var(--ink-700);font-size:.93rem;line-height:1.6;
 }
-.sources strong{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-600);display:block;margin-bottom:12px}
-.sources ul{padding-left:0;margin:0;list-style:none}
-.sources li{margin:0 0 8px;padding-left:16px;position:relative}
-.sources li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--teal-500)}
+.sources strong{
+  display:flex;align-items:center;gap:9px;margin-bottom:18px;
+  font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-600);
+}
+.sources strong::before{content:"";width:18px;height:1px;background:var(--teal-500);display:inline-block}
+.sources ul{padding-left:0;margin:0;list-style:none;counter-reset:src}
+.sources li{
+  margin:0 0 11px;padding:0 0 11px 30px;position:relative;
+  border-bottom:1px solid var(--line);counter-increment:src;
+}
+.sources li:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.sources li::before{
+  content:counter(src);position:absolute;left:0;top:0;
+  width:19px;height:19px;border-radius:50%;background:var(--teal-tint);color:var(--teal-600);
+  font-family:var(--f-mono);font-size:.64rem;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
 .sources a{color:var(--teal-600);text-decoration:underline;text-underline-offset:3px}
+.sources a:hover{color:var(--teal-500)}
 
 /* ---- back link ---- */
-.back{margin:44px 0 0;padding-top:28px;border-top:1px solid var(--line)}
+.back{margin:48px 0 0;padding-top:30px;border-top:1px solid var(--line);display:flex}
 .back a{
-  display:inline-flex;align-items:center;gap:8px;border:1px solid #cddbd7;border-radius:999px;
-  padding:.75em 1.2em;font-size:.9rem;font-weight:600;color:var(--navy-900);
-  transition:transform .25s var(--ease),border-color .25s,background .25s;
+  display:inline-flex;align-items:center;gap:9px;border:1px solid #cddbd7;border-radius:999px;
+  padding:.8em 1.3em;font-size:.9rem;font-weight:600;color:var(--navy-900);background:var(--white);
+  transition:transform .25s var(--ease),border-color .25s,background .25s,box-shadow .25s;
 }
-.back a:hover{border-color:var(--navy-900);background:var(--white);transform:translateY(-1px)}
+.back a:hover{border-color:var(--navy-900);box-shadow:0 8px 20px -12px rgba(6,20,32,.35);transform:translateY(-1px)}
 
 @media (max-width:760px){
   .article-nav{min-height:64px;padding-block:12px}
   .article-nav .brand{font-size:1rem}
   main.article{padding:44px 20px 72px}
+  main.article > article > p:first-of-type::first-letter{font-size:3em}
+  main.article > article h2{flex-direction:column;gap:6px;align-items:flex-start}
 }

@@ -444,41 +444,59 @@ h2{font-weight:600}
 .showcase-hint svg{width:14px;height:14px}
 
 /* ==========================================================================
-   Interactive 3D car
+   Savings calculator
    ========================================================================== */
-.spin-stage{display:flex;flex-direction:column;align-items:center;margin-top:8px}
-.spin-canvas-wrap{
-  position:relative;width:min(720px,100%);aspect-ratio:16/9;
-  border-radius:var(--radius-lg);overflow:hidden;
-  background:
-    radial-gradient(60% 55% at 50% 62%, rgba(47,178,142,.16), transparent 70%),
-    radial-gradient(120% 100% at 50% 0%, rgba(255,255,255,.05), transparent 55%);
+.calc-card{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:0;
+  background:var(--navy-900);border-radius:var(--radius-lg);overflow:hidden;
   border:1px solid rgba(255,255,255,.08);
 }
-.spin-canvas-wrap canvas{cursor:grab}
-.spin-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.spin-loading-dot{width:10px;height:10px;border-radius:50%;background:var(--teal-400);animation:spinLoadPulse 1s ease-in-out infinite}
-@keyframes spinLoadPulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
-.spin-hint{
-  display:inline-flex;align-items:center;gap:9px;margin-top:18px;
-  font-family:var(--f-mono);font-size:.8rem;color:var(--ink-mist);
-  padding:.55em 1.1em;border:1px solid rgba(255,255,255,.14);border-radius:999px;
-  transition:opacity .5s var(--ease);
+.calc-inputs{padding:44px;display:flex;flex-direction:column;gap:30px}
+.calc-field label{
+  display:block;font-family:var(--f-mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--teal-300);margin-bottom:14px;
 }
-.spin-hint svg{width:16px;height:16px;color:var(--teal-300);flex:none;animation:spinHintNudge 1.8s ease-in-out infinite}
-.spin-hint.is-dismissed{opacity:0}
-@keyframes spinHintNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
-.spin-fallback{
-  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-  color:var(--ink-mist);text-align:center;padding:20px;
+.calc-field .calc-value{font-family:var(--f-display);font-size:1.5rem;font-weight:600;color:#fff;margin-left:8px}
+.calc-slider{
+  -webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:999px;
+  background:rgba(255,255,255,.14);outline:none;cursor:pointer;
 }
-.spin-fallback img{width:64px;height:64px;border-radius:16px;opacity:.9}
-.spin-fallback span{font-family:var(--f-mono);font-size:.8rem}
-@media (prefers-reduced-motion: reduce){
-  .spin-loading-dot,.spin-hint svg{animation:none}
+.calc-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;
+  background:var(--teal-400);border:3px solid var(--navy-900);box-shadow:0 0 0 2px var(--teal-400);cursor:pointer;
 }
-@media (max-width:640px){
-  .spin-canvas-wrap{aspect-ratio:4/3}
+.calc-slider::-moz-range-thumb{
+  width:22px;height:22px;border-radius:50%;background:var(--teal-400);
+  border:3px solid var(--navy-900);box-shadow:0 0 0 2px var(--teal-400);cursor:pointer;
+}
+.calc-ticks{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--f-mono);font-size:.72rem;color:var(--ink-mist);opacity:.7}
+.calc-group{display:flex;gap:10px}
+.calc-pill{
+  flex:1;padding:.85em .5em;border-radius:12px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.04);color:#fff;font-weight:600;font-size:.92rem;text-align:center;
+  transition:all .25s var(--ease);
+}
+.calc-pill:hover{border-color:rgba(127,214,187,.5)}
+.calc-pill.is-active{background:var(--teal-500);border-color:var(--teal-500)}
+.calc-note{font-size:.82rem;color:var(--ink-mist);line-height:1.6}
+
+.calc-output{
+  padding:44px;display:flex;flex-direction:column;justify-content:center;gap:28px;
+  background:radial-gradient(120% 100% at 100% 0%, rgba(47,178,142,.16), transparent 60%);
+}
+.calc-stat .calc-label{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mist)}
+.calc-stat .calc-big{
+  font-family:var(--f-display);font-weight:600;color:#fff;
+  font-size:clamp(2.2rem,4vw,3.1rem);line-height:1.05;margin-top:6px;
+}
+.calc-stat .calc-big .calc-unit{font-size:.5em;color:var(--teal-300);font-weight:500;margin-left:6px}
+.calc-divider{height:1px;background:rgba(255,255,255,.1)}
+.calc-disclaimer{font-size:.78rem;color:var(--ink-mist);opacity:.75;line-height:1.6}
+.calc-cta{margin-top:4px}
+
+@media (max-width:820px){
+  .calc-card{grid-template-columns:1fr}
+  .calc-inputs,.calc-output{padding:32px 26px}
 }
 
 /* ==========================================================================
@@ -1061,23 +1079,43 @@ h2{font-weight:600}
   </div>
 </section>
 
-<!-- ============ INTERACTIVE 3D CAR ============ -->
-<section class="section--tight section--dark spin-section">
+<!-- ============ SAVINGS CALCULATOR ============ -->
+<section class="section--tight section--dark">
   <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow on-dark">Take it for a spin</span>
-      <h2 class="h-section">Built around trust. Drag to see it from every side.</h2>
-      <p class="lede" style="margin-inline:auto">A quick, playful look at the idea behind the icon — drag or swipe the car below.</p>
+      <span class="eyebrow on-dark">See what you'd save</span>
+      <h2 class="h-section">Your commute, split three ways.</h2>
+      <p class="lede" style="margin-inline:auto">Drag the slider to match your current commute spend and see roughly what a shared, zero-commission ride could save you.</p>
     </div>
-    <div class="spin-stage reveal">
-      <div class="spin-canvas-wrap" id="carSceneMount" aria-label="Interactive 3D model of a TrustRoute car. Drag or swipe to rotate.">
-        <div class="spin-loading" id="carSceneLoading">
-          <span class="spin-loading-dot"></span>
+    <div class="calc-card reveal">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label for="calcSpend">What you spend on commuting each month<span class="calc-value" id="calcSpendValue">₹6,000</span></label>
+          <input type="range" id="calcSpend" class="calc-slider" min="1000" max="15000" step="500" value="6000" aria-describedby="calcSpendValue">
+          <div class="calc-ticks"><span>₹1,000</span><span>₹15,000</span></div>
         </div>
+        <div class="calc-field">
+          <label>How many people would share the ride</label>
+          <div class="calc-group" id="calcGroup" role="group" aria-label="Carpool group size">
+            <button type="button" class="calc-pill" data-size="2">2 people</button>
+            <button type="button" class="calc-pill is-active" data-size="3">3 people</button>
+            <button type="button" class="calc-pill" data-size="4">4 people</button>
+          </div>
+        </div>
+        <p class="calc-note">TrustRoute never takes a commission — the fare is fixed and split directly between everyone in the car, so more people sharing means a smaller share for you.</p>
       </div>
-      <div class="spin-hint" id="carSceneHint">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 12h8M8 12l2.5-2.5M8 12l2.5 2.5M16 12l-2.5-2.5M16 12l-2.5 2.5"/></svg>
-        Drag or swipe to rotate
+      <div class="calc-output">
+        <div class="calc-stat">
+          <span class="calc-label">Estimated monthly saving</span>
+          <div class="calc-big"><span id="calcMonthly">₹4,000</span></div>
+        </div>
+        <div class="calc-divider"></div>
+        <div class="calc-stat">
+          <span class="calc-label">That's roughly, per year</span>
+          <div class="calc-big" style="font-size:clamp(1.4rem,2.4vw,1.8rem)"><span id="calcAnnual">₹48,000</span></div>
+        </div>
+        <p class="calc-disclaimer">An illustrative estimate based on splitting your current commute cost evenly, not a guaranteed fare — actual savings depend on your route and fare ladder.</p>
+        <a class="btn btn--primary calc-cta" href="#download">Start saving with TrustRoute</a>
       </div>
     </div>
   </div>
@@ -1497,39 +1535,53 @@ document.addEventListener('DOMContentLoaded', () => {
     rail.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
   }
 
-  /* ---- Interactive 3D car: lazy-init only when the section is near view ---- */
-  const carMount = document.getElementById('carSceneMount');
-  const carLoading = document.getElementById('carSceneLoading');
-  const carHint = document.getElementById('carSceneHint');
-  if (carMount) {
-    let carInited = false;
-    const carObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !carInited) {
-          carInited = true;
-          import('./assets/car-scene.js')
-            .then((mod) => {
-              const instance = mod.initCarScene(carMount);
-              if (instance === false) throw new Error('WebGL unavailable');
-              carLoading?.remove();
-              // fade the hint out after the first drag
-              const dismiss = () => { carHint?.classList.add('is-dismissed'); };
-              carMount.addEventListener('pointerdown', dismiss, { once: true });
-            })
-            .catch(() => {
-              // graceful static fallback if WebGL/module loading isn't available
-              if (carLoading) {
-                carLoading.outerHTML = `<div class="spin-fallback">
-                  <img src="assets/logo.png" alt="">
-                  <span>Interactive preview unavailable on this device</span>
-                </div>`;
-              }
-            });
-          carObserver.disconnect();
-        }
-      });
-    }, { rootMargin: '200px 0px' });
-    carObserver.observe(carMount);
+  /* ---- Savings calculator ---- */
+  const calcSpend = document.getElementById('calcSpend');
+  const calcSpendValue = document.getElementById('calcSpendValue');
+  const calcGroup = document.getElementById('calcGroup');
+  const calcMonthly = document.getElementById('calcMonthly');
+  const calcAnnual = document.getElementById('calcAnnual');
+  if (calcSpend && calcGroup && calcMonthly && calcAnnual) {
+    let groupSize = 3;
+    const inr = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateNumber(el, from, to, formatter) {
+      if (reduceMotion || from === to) { el.textContent = formatter(to); return; }
+      const start = performance.now();
+      const duration = 500;
+      function frame(now) {
+        const p = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = formatter(from + (to - from) * eased);
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    let currentMonthly = 0, currentAnnual = 0;
+    function update() {
+      const spend = parseInt(calcSpend.value, 10);
+      calcSpendValue.textContent = inr(spend);
+      const shared = spend / groupSize;
+      const monthlySaving = Math.max(0, spend - shared);
+      const annualSaving = monthlySaving * 12;
+      animateNumber(calcMonthly, currentMonthly, monthlySaving, inr);
+      animateNumber(calcAnnual, currentAnnual, annualSaving, inr);
+      currentMonthly = monthlySaving;
+      currentAnnual = annualSaving;
+    }
+
+    calcSpend.addEventListener('input', update);
+    calcGroup.addEventListener('click', (e) => {
+      const btn = e.target.closest('.calc-pill');
+      if (!btn) return;
+      calcGroup.querySelectorAll('.calc-pill').forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      groupSize = parseInt(btn.dataset.size, 10);
+      update();
+    });
+    update();
   }
 
 });
