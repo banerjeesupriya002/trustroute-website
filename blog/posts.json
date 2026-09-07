@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-09-07",
+    "title": "A panic button is not a safety system: the lesson in Delhi’s bus-safety order",
+    "slug": "a-panic-button-is-not-a-safety-system-the-lesson-in-delhis-bus-safety-order-2026-09-07",
+    "category": "Women's Safety",
+    "excerpt": "Delhi’s late-August bus-safety order requires working tracking devices and accessible panic buttons. Its more useful lesson for buses, office transport and carpools is that a safety feature works only when the trip, the people involved and the response process are clear.",
+    "sources": [
+      {
+        "title": "Delhi Govt issues safety plan for city, outside buses; orders panic buttons, first-aid kits — The New Indian Express",
+        "url": "https://www.newindianexpress.com/amp/story/cities/delhi/2026/Sep/03/government-issues-safety-plan-for-city-outside-buses-orders-panic-buttons-first-aid-kits"
+      },
+      {
+        "title": "No curtains, no unauthorised stops: Delhi government’s new order over bus safety — The Indian Express",
+        "url": "https://indianexpress.com/article/cities/delhi/delhi-government-new-order-on-bus-safety-no-curtains-no-unauthorised-stops-10859661/"
+      },
+      {
+        "title": "Motor Vehicles (Vehicle Location Tracking Device and Emergency Button) Order, 2018 — Ministry of Road Transport and Highways",
+        "url": "https://morth.gov.in/sites/default/files/notifications_document/File3406.pdf"
+      },
+      {
+        "title": "AIS-140: Automotive Industry Standard for Vehicle Location Tracking Device — Ministry of Road Transport and Highways",
+        "url": "https://morth.nic.in/sites/default/files/ASI/14201910518PMAIS-140.pdf"
+      },
+      {
+        "title": "Delhi Police telephone directory",
+        "url": "https://www.delhipolice.gov.in/telephonedirectory"
+      },
+      {
+        "title": "TrustRoute – For Trusted Rides — Apple App Store",
+        "url": "https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861"
+      }
+    ]
+  },
+  {
     "date": "2026-09-04",
     "title": "Delhi’s Pink Saheli transition is a reminder: free bus travel is only one part of a workable commute",
     "slug": "delhis-pink-saheli-transition-is-a-reminder-free-bus-travel-is-only-one-part-of-a-workable-2026-09-04",
