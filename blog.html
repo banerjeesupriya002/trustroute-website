@@ -1,74 +1,493 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TrustRoute Blog — Smarter Commutes & Mobility</title>
-<meta name="description" content="Daily insights on commuting, carpooling, CORPORATE MOBILITY, road safety and sustainable travel from TrustRoute.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustRoute Journal — Insights on Commuting & Carpooling</title>
+<meta name="description" content="Daily, research-led insights on carpooling, traffic and commuting, women's safety, corporate mobility, road safety and sustainable travel from TrustRoute.">
+
 <link rel="canonical" href="https://trustroute.app/blog.html">
+<meta name="theme-color" content="#0a1a2c">
+<link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrustRoute">
+<meta property="og:title" content="TrustRoute Journal — Insights on Commuting & Carpooling">
+<meta property="og:description" content="Daily, research-led insights on carpooling, traffic and commuting, women's safety, corporate mobility, road safety and sustainable travel.">
+<meta property="og:url" content="https://trustroute.app/blog.html">
+<meta property="og:image" content="https://trustroute.app/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TrustRoute Journal — Insights on Commuting & Carpooling">
+<meta name="twitter:image" content="https://trustroute.app/assets/og-image.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "TrustRoute Journal",
+  "description": "Daily, research-led insights on carpooling, traffic and commuting, women's safety, corporate mobility, road safety and sustainable travel.",
+  "url": "https://trustroute.app/blog.html",
+  "publisher": { "@type": "Organization", "name": "TrustRoute", "url": "https://trustroute.app/" }
+}
+</script>
+
 <style>
-:root{--navy:#0a1a2c;--navy2:#102340;--teal:#159172;--teal2:#2fb28e;--paper:#f6f8f7;--white:#fff;--ink:#0c1b28;--muted:#5c7583;--line:#d8e3e0;--max:1220px}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif}a{text-decoration:none;color:inherit}.wrap{max-width:var(--max);margin:auto;padding:0 clamp(20px,5vw,64px)}
-.nav{position:fixed;inset-inline:0;top:0;z-index:100;padding:18px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;transition:background .35s,padding .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent;color:#fff}.nav.is-scrolled{background:rgba(10,26,44,.86);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);padding-block:12px;border-color:rgba(255,255,255,.08);box-shadow:0 12px 30px -20px rgba(0,0,0,.6)}.brand{display:flex;align-items:center;gap:11px}.brand img{width:36px;height:36px;border-radius:9px;flex:none}.brand-word{font-family:'Space Grotesk';font-weight:600;font-size:1.18rem;color:#fff;letter-spacing:-.01em}.brand-word b{color:#7fd6bb;font-weight:600}.navlinks{display:flex;align-items:center;gap:36px;position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}.navlinks a{font-size:.92rem;color:rgba(255,255,255,.78);font-weight:500;position:relative;padding-bottom:3px;transition:color .25s}.navlinks a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:#7fd6bb;transition:right .3s}.navlinks a:hover,.navlinks a.active{color:#fff}.navlinks a:hover::after,.navlinks a.active::after{right:0}
-.hero{padding:150px 0 60px;background:var(--navy);color:#fff;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:500px;height:500px;right:-180px;top:-180px;border:1px solid rgba(47,178,142,.18);border-radius:50%;box-shadow:0 0 0 80px rgba(47,178,142,.025),0 0 0 160px rgba(47,178,142,.018)}.eyebrow{font-family:'IBM Plex Mono';font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#7fd6bb}.hero h1{font:700 clamp(2.6rem,6vw,5rem)/.98 'Space Grotesk';max-width:780px;margin:14px 0 20px}.hero p{max-width:700px;color:rgba(255,255,255,.68);font-size:1.08rem;line-height:1.7}
-.toolbar{display:flex;justify-content:space-between;align-items:center;padding:34px 0 22px;gap:20px}.toolbar h2{font:700 1.5rem 'Space Grotesk'}.status{font-family:'IBM Plex Mono';font-size:.72rem;color:var(--teal);display:flex;align-items:center;gap:8px}.status i{width:7px;height:7px;background:var(--teal2);border-radius:50%;box-shadow:0 0 0 5px rgba(47,178,142,.12)}
-.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-bottom:80px}.post{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .35s,box-shadow .35s}.post:hover{transform:translateY(-5px);box-shadow:0 22px 45px -28px rgba(6,20,32,.45)}.post-top{height:8px;background:linear-gradient(90deg,var(--teal),var(--teal2),#7fd6bb)}.post-body{padding:26px}.meta{font:500 .68rem 'IBM Plex Mono';text-transform:uppercase;letter-spacing:.08em;color:var(--teal);margin-bottom:13px}.post h3{font:700 1.35rem/1.15 'Space Grotesk';margin:0 0 12px}.post p{color:var(--muted);line-height:1.65;margin:0 0 20px}.read{font:600 .86rem 'IBM Plex Sans';color:var(--navy)}.read span{color:var(--teal);margin-left:5px}
-.empty{grid-column:1/-1;text-align:center;padding:70px 20px;border:1px dashed var(--line);border-radius:24px;color:var(--muted)}
-.footer{background:var(--navy);color:#fff;padding:38px 0}.footer p{margin:0;color:rgba(255,255,255,.5);font-size:.82rem}.footer-row{display:flex;justify-content:space-between;gap:20px}
-@media(max-width:880px){.posts{grid-template-columns:1fr 1fr}.navlinks{display:none}}@media(max-width:560px){.posts{grid-template-columns:1fr}.hero{padding-top:65px}.toolbar{align-items:flex-start;flex-direction:column}}
+:root{
+  --navy-950:#050c15; --navy-900:#0a1a2c; --navy-800:#102340; --navy-700:#183253;
+  --teal-600:#0d7a63; --teal-500:#159172; --teal-400:#2fb28e; --teal-300:#7fd6bb; --teal-tint:#e3f5ef;
+  --pink-500:#d6338a; --pink-tint:#fbe2ef;
+  --amber-400:#e8a13b; --amber-tint:#fbeed7;
+  --paper:#f6f8f7; --paper-alt:#eef3f1; --white:#ffffff;
+  --ink-900:#0c1b28; --ink-700:#33495a; --ink-500:#5c7583; --ink-mist:#c9dbe0;
+  --line:#d8e3e0; --line-dark:#22364f;
+  --f-display:'Space Grotesk','Segoe UI',sans-serif;
+  --f-body:'IBM Plex Sans','Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono','Courier New',monospace;
+  --max:1220px; --edge:clamp(20px,5vw,64px);
+  --radius-lg:28px; --radius-md:18px;
+  --shadow-card:0 14px 34px -18px rgba(6,20,32,.28);
+  --ease:cubic-bezier(.16,.8,.24,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
+body{margin:0;font-family:var(--f-body);color:var(--ink-900);background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,p{margin:0}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--edge)}
+::selection{background:var(--teal-400);color:var(--navy-950)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal-400);outline-offset:3px;border-radius:6px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:.55em;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-300);font-weight:500}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--teal-300);display:inline-block}
+h1,h2,h3{font-family:var(--f-display);letter-spacing:-.01em;line-height:1.05}
+.h-hero{font-size:clamp(2.3rem,4.8vw,3.6rem);line-height:1.04}
+.h-section{font-size:clamp(1.7rem,3vw,2.3rem)}
+.lede{font-size:clamp(1.02rem,1.3vw,1.15rem);color:var(--ink-mist);line-height:1.65;max-width:58ch}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;padding:.9em 1.5em;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid transparent;transition:transform .35s var(--ease),background .25s,border-color .25s;white-space:nowrap}
+.btn--ghost-dark{border-color:rgba(255,255,255,.28);color:var(--white)}
+.btn--ghost-dark:hover{border-color:rgba(255,255,255,.6);transform:translateY(-2px)}
+.btn--sm{padding:.65em 1.1em;font-size:.85rem}
+
+/* ---- nav (shared component, identical to main site) ---- */
+.nav{position:fixed;inset-inline:0;top:0;z-index:100;padding:18px var(--edge);display:flex;align-items:center;justify-content:space-between;transition:background .35s var(--ease),padding .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;border-bottom:1px solid transparent}
+.nav-bg{position:fixed;inset-inline:0;top:0;z-index:99;opacity:0;transition:opacity .35s var(--ease);background:rgba(10,26,44,.86);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 12px 30px -20px rgba(0,0,0,.6);pointer-events:none}
+.nav-bg.is-scrolled{opacity:1}
+.nav.is-scrolled{padding-block:12px}
+.nav:not(.is-scrolled){background:var(--navy-950)}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:36px;height:36px;border-radius:9px;flex:none}
+.brand-word{font-family:var(--f-display);font-weight:600;font-size:1.18rem;color:var(--white);letter-spacing:-.01em}
+.brand-word b{color:var(--teal-300);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,36px);flex-wrap:nowrap}
+.nav-links a{font-size:.92rem;color:rgba(255,255,255,.78);font-weight:500;position:relative;padding-bottom:3px;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--teal-300);transition:right .3s var(--ease)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after,.nav-links a.is-active::after{right:0}
+.nav-links a.is-active{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-toggle{display:none;background:none;border:0;padding:8px;color:var(--white)}
+.nav-toggle svg{width:24px;height:24px}
+@media (max-width:1180px){
+  .nav-links{position:fixed;inset:0;top:0;background:var(--navy-950);flex-direction:column;justify-content:center;gap:30px;transform:translateY(-101%);transition:transform .4s var(--ease);z-index:99}
+  .nav-links a{font-size:1.4rem}
+  .nav-links.is-open{transform:translateY(0)}
+  .nav-toggle{display:inline-flex}
+  .nav-right .btn--ghost-dark,.nav-right .store-badge{display:none}
+}
+
+/* ---- store badges ---- */
+.store-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.store-badge{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:7px 12px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.store-badge:hover{transform:translateY(-2px);border-color:rgba(127,214,187,.65);background:rgba(255,255,255,.11)}
+.store-badge svg{width:22px;height:22px;fill:currentColor;flex:none}
+.store-badge span{display:flex;flex-direction:column;line-height:1}
+.store-badge small{font-size:.48rem;letter-spacing:.06em;opacity:.75;margin-bottom:3px}
+.store-badge strong{font-family:var(--f-display);font-size:.85rem;font-weight:600}
+
+/* ---- mobile download bar ---- */
+.mobile-download-bar{display:none;position:fixed;inset-inline:0;bottom:0;z-index:90;align-items:center;justify-content:space-between;gap:14px;padding:12px 18px;background:rgba(8,20,34,.92);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-top:1px solid rgba(255,255,255,.1)}
+.mobile-download-bar .mdb-label{display:flex;align-items:center;gap:10px;color:#fff}
+.mobile-download-bar .mdb-label img{width:30px;height:30px;border-radius:8px;flex:none}
+.mobile-download-bar .mdb-label span{font-size:.82rem;line-height:1.25}
+.mobile-download-bar .mdb-label b{display:block;font-family:var(--f-display);font-size:.92rem}
+.mobile-download-bar .mdb-actions{display:flex;gap:8px;flex:none}
+.mdb-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--teal-500);color:#fff;flex:none}
+.mdb-icon svg{width:20px;height:20px}
+.mdb-icon.mdb-outline{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+@media (max-width:640px){.mobile-download-bar{display:flex}body{padding-bottom:76px}}
+
+/* ---- reveal on scroll ---- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+.reveal-stagger.is-visible > *{opacity:1;transform:none}
+.reveal-stagger > *{opacity:0;transform:translateY(18px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+
+/* ==========================================================================
+   Journal hero
+   ========================================================================== */
+.journal-hero{
+  position:relative;overflow:clip;
+  background:radial-gradient(900px 500px at 85% -10%,rgba(21,145,114,.32),transparent 60%),linear-gradient(180deg,var(--navy-950),var(--navy-900) 60%,var(--navy-800));
+  color:var(--white);padding:158px var(--edge) 64px;
+}
+.journal-hero .dots{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.journal-hero h1{margin:18px 0 16px;max-width:16ch}
+.journal-meta{display:flex;align-items:center;gap:10px;margin-top:28px;font-family:var(--f-mono);font-size:.8rem;color:var(--teal-300)}
+.journal-meta .pulse{width:8px;height:8px;border-radius:50%;background:var(--teal-400);box-shadow:0 0 0 4px rgba(47,178,142,.22);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(47,178,142,.22)}50%{box-shadow:0 0 0 8px rgba(47,178,142,.05)}}
+@media (prefers-reduced-motion: reduce){.journal-meta .pulse{animation:none}}
+
+/* ==========================================================================
+   Filters
+   ========================================================================== */
+.filters-row{display:flex;flex-wrap:wrap;gap:10px;padding:36px 0 8px}
+.filter-pill{
+  padding:.6em 1.15em;border-radius:999px;border:1px solid var(--line);background:var(--white);
+  font-size:.85rem;font-weight:600;color:var(--ink-700);
+  transition:all .25s var(--ease);
+}
+.filter-pill:hover{border-color:var(--teal-400);color:var(--teal-600)}
+.filter-pill.is-active{background:var(--navy-900);border-color:var(--navy-900);color:var(--white)}
+
+/* ==========================================================================
+   Posts grid
+   ========================================================================== */
+.posts-toolbar{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:20px 0 28px;flex-wrap:wrap}
+.posts-count{font-family:var(--f-mono);font-size:.8rem;color:var(--ink-500)}
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-bottom:100px}
+.post-card{
+  background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s;
+}
+.post-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card);border-color:transparent}
+.post-card-top{height:6px;background:linear-gradient(90deg,var(--teal-500),var(--teal-300))}
+.post-card-body{padding:26px 26px 24px;display:flex;flex-direction:column;gap:14px;flex:1}
+.post-cat{
+  display:inline-flex;align-self:flex-start;align-items:center;gap:6px;
+  font-family:var(--f-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  padding:.4em .8em;border-radius:999px;
+}
+.cat-carpooling{background:var(--teal-tint);color:var(--teal-600)}
+.cat-traffic{background:var(--amber-tint);color:#a9660f}
+.cat-women{background:var(--pink-tint);color:var(--pink-500)}
+.cat-corporate{background:#e7ecf4;color:var(--navy-700)}
+.cat-road{background:#fde2e1;color:#b3332c}
+.cat-sustainable{background:var(--teal-tint);color:var(--teal-600)}
+.cat-insights{background:var(--paper-alt);color:var(--ink-700)}
+.post-date{font-family:var(--f-mono);font-size:.72rem;color:var(--ink-500)}
+.post-card h3{font-size:1.12rem;line-height:1.35;font-weight:600;color:var(--ink-900)}
+.post-card p{color:var(--ink-500);line-height:1.6;font-size:.92rem;flex:1}
+.post-read{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.88rem;color:var(--navy-900);margin-top:4px}
+.post-read svg{width:15px;height:15px;color:var(--teal-500);transition:transform .3s var(--ease)}
+.post-card:hover .post-read svg{transform:translateX(4px)}
+
+.posts-empty{grid-column:1/-1;text-align:center;padding:80px 20px;border:1px dashed var(--line);border-radius:22px;color:var(--ink-500)}
+.posts-empty b{display:block;color:var(--ink-900);font-family:var(--f-display);font-size:1.1rem;margin-bottom:8px}
+
+.skeleton{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.skeleton-card{height:230px;border-radius:22px;background:linear-gradient(100deg,var(--paper-alt) 30%,#e4ece9 50%,var(--paper-alt) 70%);background-size:200% 100%;animation:shimmer 1.6s ease-in-out infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media (prefers-reduced-motion: reduce){.skeleton-card{animation:none}}
+
+/* ==========================================================================
+   Footer (shared)
+   ========================================================================== */
+.footer{background:var(--navy-950);color:rgba(255,255,255,.6);padding-top:76px}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand .brand{margin-bottom:16px}
+.footer-brand p{max-width:30ch;line-height:1.6;font-size:.92rem}
+.footer-col h4{color:var(--white);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-family:var(--f-mono);font-weight:500;margin-bottom:18px}
+.footer-col ul{display:flex;flex-direction:column;gap:12px}
+.footer-col a{font-size:.92rem;transition:color .2s}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{padding-block:26px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.8rem}
+.footer-bottom .disclaimer{max-width:640px;line-height:1.6}
+
+@media (max-width:900px){
+  .posts-grid,.skeleton{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .posts-grid,.skeleton{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+}
+
+/* ---- scroll progress bar ---- */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0%;z-index:200;background:linear-gradient(90deg,var(--teal-500),var(--teal-300));pointer-events:none}
+@media (prefers-reduced-motion: reduce){.scroll-progress{transition:none}}
 </style>
 </head>
 <body>
+<div class="scroll-progress"></div>
+
+<div class="nav-bg" id="navBg"></div>
 <header class="nav">
   <a href="index.html" class="brand">
     <img src="assets/logo.png" alt="TrustRoute logo">
     <span class="brand-word">Trust<b>Route</b></span>
   </a>
-  <nav class="navlinks" id="navLinks">
+  <nav class="nav-links" id="navLinks">
     <a href="index.html">Home</a>
     <a href="index.html#how-it-works">How it works</a>
     <a href="index.html#safety">Safety</a>
     <a href="index.html#faq">FAQ</a>
     <a href="investors.html">Investors</a>
-    <a class="active" href="blog.html">Blog</a>
+    <a href="blog.html" class="is-active">Blog</a>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
   </nav>
+  <div class="nav-right">
+    <div class="store-links" aria-label="Download TrustRoute">
+      <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.emergent.verifiedcommute.kr5l3d&hl=en_IN" target="_blank" rel="noopener" aria-label="Get TrustRoute on Google Play" title="Get it on Google Play">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 2.6c-.2.3-.3.7-.3 1.2v16.4c0 .5.1.9.3 1.2L13.1 12 3.2 2.6zM14.1 12.9l2.7 2.7-10.7 6.1L14.1 12.9zM14.1 11.1L6.1 2.3l10.7 6.1-2.7 2.7zM18 9.3l2.4 1.4c.8.5.8 1.2 0 1.7L18 13.8 15.1 12 18 9.3z"/></svg>
+        <span><small>GET IT ON</small><strong>Google Play</strong></span>
+      </a>
+      <a class="store-badge" href="https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861" target="_blank" rel="noopener" aria-label="Download TrustRoute on the App Store" title="Download on the App Store">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.2.7 1.1 1.6 2.2 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.4 0 1.8.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.9zM15 5.9c.6-.8 1-1.9.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2z"/></svg>
+        <span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span>
+      </a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
 </header>
-<section class="hero"><div class="wrap">
-  <span class="eyebrow">TrustRoute Journal</span>
-  <h1>Useful knowledge for the everyday commute.</h1>
-  <p>Fresh, research-led stories on carpooling, CORPORATE MOBILITY, road safety, traffic, sustainability and the technology changing how people move.</p>
-</div></section>
+
+<section class="journal-hero">
+  <div class="wrap">
+    <span class="eyebrow">TrustRoute Journal</span>
+    <h1 class="h-hero">Useful knowledge for the everyday commute.</h1>
+    <p class="lede">Research-led stories on carpooling, traffic and commuting, road safety, corporate mobility and sustainable travel — the ideas shaping how people get to work.</p>
+    <div class="journal-meta"><span class="pulse"></span> A new, source-checked insight is published automatically, most days</div>
+  </div>
+</section>
+
 <main class="wrap">
-  <div class="toolbar"><h2>Latest insights</h2></div>
-  <div class="posts" id="posts"><div class="empty">Loading the latest insights…</div></div>
+  <div class="filters-row reveal" id="filters">
+    <button class="filter-pill is-active" data-cat="all">All</button>
+    <button class="filter-pill" data-cat="Carpooling">Carpooling</button>
+    <button class="filter-pill" data-cat="Traffic &amp; Commuting">Traffic &amp; Commuting</button>
+    <button class="filter-pill" data-cat="Women's Safety">Women's Safety</button>
+    <button class="filter-pill" data-cat="Corporate Mobility">Corporate Mobility</button>
+    <button class="filter-pill" data-cat="Road Safety">Road Safety</button>
+    <button class="filter-pill" data-cat="Sustainable Mobility">Sustainable Mobility</button>
+    <button class="filter-pill" data-cat="Commuter Insights">Commuter Insights</button>
+  </div>
+  <div class="posts-toolbar">
+    <span class="posts-count" id="postsCount"></span>
+  </div>
+  <div class="posts-grid" id="posts">
+    <div class="skeleton"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></div>
+  </div>
 </main>
-<footer class="footer"><div class="wrap footer-row"><p>© 2026 TrustRoute. Verified people. Trusted rides.</p><p>Research is sourced from public web information and independently written for TrustRoute.</p></div></footer>
+
+<footer class="footer">
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="brand"><img src="assets/logo.png" alt="TrustRoute logo"><span class="brand-word" style="color:#fff">Trust<b>Route</b></span></a>
+      <p>Verified people. Trusted rides. A carpool network built for the daily office commute.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="index.html#how-it-works">How it works</a></li>
+        <li><a href="index.html#safety">Safety &amp; verification</a></li>
+        <li><a href="index.html#coordination">Group chat &amp; live location</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="investors.html">For investors</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacy policy</a></li>
+        <li><a href="terms.html">Terms &amp; conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@trustroute.app">hello@trustroute.app</a></li>
+        <li><span>India</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p class="disclaimer">TrustRoute is a platform that connects verified individuals travelling the same commute route to arrange carpooling on a cost-sharing basis. It is not a transport operator, taxi service, or aggregator cab service.</p>
+    <p>© 2026 TrustRoute. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="mobile-download-bar">
+  <a href="index.html#download" class="mdb-label" aria-label="Go to download section">
+    <img src="assets/logo.png" alt="">
+    <span><b>Get TrustRoute</b>Free · Aadhaar-verified</span>
+  </a>
+  <div class="mdb-actions">
+    <a class="mdb-icon" href="https://play.google.com/store/apps/details?id=com.emergent.verifiedcommute.kr5l3d&hl=en_IN" target="_blank" rel="noopener" aria-label="Get it on Google Play">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.2 2.6c-.2.3-.3.7-.3 1.2v16.4c0 .5.1.9.3 1.2L13.1 12 3.2 2.6zM14.1 12.9l2.7 2.7-10.7 6.1L14.1 12.9zM14.1 11.1L6.1 2.3l10.7 6.1-2.7 2.7zM18 9.3l2.4 1.4c.8.5.8 1.2 0 1.7L18 13.8 15.1 12 18 9.3z"/></svg>
+    </a>
+    <a class="mdb-icon mdb-outline" href="https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861" target="_blank" rel="noopener" aria-label="Download on the App Store">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.2.7 1.1 1.6 2.2 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.4 0 1.8.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.9zM15 5.9c.6-.8 1-1.9.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2z"/></svg>
+    </a>
+  </div>
+</div>
+
 <script>
-(async()=>{
-  const el=document.getElementById('posts');
-  try{
-    const r=await fetch('blog/posts.json',{cache:'no-store'});
-    if(!r.ok) throw new Error('posts unavailable');
-    const posts=await r.json();
-    if(!posts.length){el.innerHTML='<div class="empty">The first daily insight is being prepared.</div>';return}
-    el.innerHTML=posts.map(p=>`<article class="post"><div class="post-top"></div><div class="post-body"><div class="meta">${escapeHtml(p.date)} · ${escapeHtml(p.category||'Mobility')}</div><h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.excerpt)}</p><a class="read" href="blog/${encodeURIComponent(p.slug)}.html">Read insight <span>→</span></a></div></article>`).join('');
-  }catch(e){el.innerHTML='<div class="empty">Insights could not be loaded right now. Please try again shortly.</div>'}
-  function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-})();
-</script>
-<script>
-(() => {
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---- nav scroll state + mobile toggle (shared behavior) ---- */
   const nav = document.querySelector('.nav');
-  const onScroll = () => nav?.classList.toggle('is-scrolled', window.scrollY > 12);
+  const navBg = document.querySelector('.nav-bg');
+  const onScroll = () => {
+    if (!nav) return;
+    const scrolled = window.scrollY > 12;
+    nav.classList.toggle('is-scrolled', scrolled);
+    if (navBg) {
+      navBg.classList.toggle('is-scrolled', scrolled);
+      navBg.style.height = nav.offsetHeight + 'px';
+    }
+  };
   onScroll();
   window.addEventListener('scroll', onScroll, {passive:true});
-})();
+
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      links.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }));
+  }
+
+  /* ---- reveal on scroll ---- */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); } });
+    }, {threshold:.12});
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  /* ---- category -> accent class map ---- */
+  const catClass = {
+    'Carpooling': 'cat-carpooling',
+    'Traffic & Commuting': 'cat-traffic',
+    "Women's Safety": 'cat-women',
+    'Corporate Mobility': 'cat-corporate',
+    'Road Safety': 'cat-road',
+    'Sustainable Mobility': 'cat-sustainable',
+    'Commuter Insights': 'cat-insights'
+  };
+
+  function escapeHtml(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  function formatDate(iso){
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d)) return escapeHtml(iso);
+    return d.toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+  }
+
+  const postsEl = document.getElementById('posts');
+  const countEl = document.getElementById('postsCount');
+  const filtersEl = document.getElementById('filters');
+  let allPosts = [];
+  let activeCat = 'all';
+
+  function renderCard(p){
+    const cls = catClass[p.category] || 'cat-insights';
+    return `<article class="post-card">
+      <div class="post-card-top"></div>
+      <div class="post-card-body">
+        <span class="post-cat ${cls}">${escapeHtml(p.category || 'Mobility')}</span>
+        <span class="post-date">${formatDate(p.date)}</span>
+        <h3>${escapeHtml(p.title)}</h3>
+        <p>${escapeHtml(p.excerpt)}</p>
+        <a class="post-read" href="blog/${encodeURIComponent(p.slug)}.html">Read insight
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </article>`;
+  }
+
+  function render(){
+    const filtered = activeCat === 'all' ? allPosts : allPosts.filter(p => p.category === activeCat);
+    countEl.textContent = filtered.length ? `${filtered.length} insight${filtered.length === 1 ? '' : 's'}` : '';
+    if (!filtered.length) {
+      postsEl.innerHTML = `<div class="posts-empty"><b>Nothing here yet</b>No published insight matches this category yet — check back soon, or view all insights.</div>`;
+      return;
+    }
+    postsEl.style.opacity = '0';
+    postsEl.className = 'posts-grid reveal-stagger';
+    setTimeout(() => {
+      postsEl.innerHTML = filtered.map(renderCard).join('');
+      postsEl.style.opacity = '1';
+      postsEl.classList.add('is-visible');
+    }, 120);
+  }
+
+  filtersEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-pill');
+    if (!btn) return;
+    filtersEl.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    activeCat = btn.dataset.cat;
+    render();
+  });
+
+  (async () => {
+    try {
+      const res = await fetch('blog/posts.json', {cache:'no-store'});
+      if (!res.ok) throw new Error('posts unavailable');
+      allPosts = await res.json();
+      if (!allPosts.length) {
+        postsEl.innerHTML = `<div class="posts-empty"><b>The first insight is on its way</b>New research-backed posts publish automatically — check back shortly.</div>`;
+        countEl.textContent = '';
+        return;
+      }
+      render();
+    } catch (e) {
+      postsEl.innerHTML = `<div class="posts-empty"><b>Insights could not be loaded</b>Please refresh, or check back in a moment.</div>`;
+    }
+  })();
+
+  /* ---- Sitewide: scroll progress bar ---- */
+  const progress = document.querySelector('.scroll-progress');
+  if (progress) {
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop;
+      const max = h.scrollHeight - h.clientHeight;
+      progress.style.width = max > 0 ? `${(scrolled / max) * 100}%` : '0%';
+    };
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    window.addEventListener('resize', updateProgress);
+  }
+
+});
 </script>
 </body>
 </html>
