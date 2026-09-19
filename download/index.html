@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download TrustRoute — Verified People. Trusted Rides.</title>
+<meta name="description" content="Download TrustRoute — verified carpooling for your daily office commute. Fixed fares, zero commission and trusted rides.">
+<link rel="canonical" href="https://trustroute.app/download/">
+<meta name="theme-color" content="#0a1a2c">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--navy-950:#050c15;--navy-900:#0a1a2c;--navy-800:#102340;--navy-700:#183253;
+--teal-600:#0d7a63;--teal-500:#159172;--teal-400:#2fb28e;--teal-300:#7fd6bb;--teal-tint:#e3f5ef;
+--pink-500:#d6338a;--pink-tint:#fbe2ef;--amber-400:#e8a13b;
+--paper:#f6f8f7;--paper-alt:#eef3f1;--white:#fff;
+--ink-900:#0c1b28;--ink-700:#33495a;--ink-500:#5c7583;--ink-mist:#c9dbe0;
+--line:#d8e3e0;--line-dark:#22364f;
+--f-display:'Space Grotesk','Segoe UI',sans-serif;--f-body:'IBM Plex Sans','Segoe UI',sans-serif;--f-mono:'IBM Plex Mono','Courier New',monospace;
+--max:1220px;--edge:clamp(20px,5vw,64px);--radius-lg:28px;--radius-md:18px;
+--shadow-soft:0 20px 60px -25px rgba(6,20,32,.35);--shadow-card:0 14px 34px -18px rgba(6,20,32,.28);--ease:cubic-bezier(.16,.8,.24,1)
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--f-body);color:var(--ink-900);background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--edge)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal-400);outline-offset:3px;border-radius:6px}
+.nav{position:fixed;inset-inline:0;top:0;z-index:100;padding:18px var(--edge);display:flex;align-items:center;justify-content:space-between;transition:padding .35s var(--ease);border-bottom:1px solid transparent}
+.nav-bg{position:fixed;inset-inline:0;top:0;z-index:99;height:76px;background:rgba(10,26,44,.86);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 12px 30px -20px rgba(0,0,0,.6)}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:36px;height:36px;border-radius:9px;flex:none}
+.brand-word{font-family:var(--f-display);font-weight:600;font-size:1.18rem;color:var(--white);letter-spacing:-.01em}
+.brand-word b{color:var(--teal-300);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:clamp(18px,2.6vw,36px);flex-wrap:nowrap}
+.nav-links a{font-size:.92rem;color:rgba(255,255,255,.78);font-weight:500;position:relative;padding-bottom:3px;transition:color .25s}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--teal-300);transition:right .3s var(--ease)}
+.nav-links a:hover,.nav-links a.is-active{color:var(--white)}.nav-links a:hover::after,.nav-links a.is-active::after{right:0}
+.nav-right{display:flex;align-items:center;gap:18px}
+.store-links{display:flex;align-items:center;gap:9px}
+.store-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;border-radius:9px;padding:6px 9px;min-width:119px;transition:.25s}
+.store-badge:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.45);transform:translateY(-1px)}
+.store-badge svg{width:18px;height:18px;fill:currentColor;flex:none}
+.store-badge small{display:block;font-size:.48rem;line-height:1.1;opacity:.7;letter-spacing:.04em}
+.store-badge strong{display:block;font-size:.72rem;line-height:1.15}
+.nav-toggle{display:none;background:none;border:0;padding:8px;color:var(--white)}
+.nav-toggle svg{width:24px;height:24px}
+.hero{position:relative;background:radial-gradient(1100px 620px at 82% -8%,rgba(21,145,114,.35),transparent 60%),radial-gradient(700px 500px at -10% 30%,rgba(214,51,138,.14),transparent 55%),linear-gradient(180deg,var(--navy-950),var(--navy-900) 45%,var(--navy-800));color:var(--white);padding-top:158px;padding-bottom:92px;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:auto 0 0;height:260px;background:linear-gradient(180deg,transparent,rgba(5,12,21,.18));pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:.55em;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-300);font-weight:500}
+.eyebrow:before{content:"";width:18px;height:1px;background:var(--teal-300)}
+h1{font-family:var(--f-display);font-weight:600;letter-spacing:-.025em;line-height:1.02;font-size:clamp(2.7rem,5.4vw,4.35rem);margin:20px 0 22px}
+h1 .accent{color:var(--teal-300)}
+.lede{font-size:clamp(1.05rem,1.4vw,1.22rem);color:rgba(233,241,238,.82);line-height:1.6;max-width:58ch}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.download-btn{display:inline-flex;align-items:center;gap:11px;min-height:54px;padding:10px 17px;border-radius:12px;background:var(--teal-500);color:#fff;font-weight:600;box-shadow:0 12px 26px -10px rgba(21,145,114,.55);transition:.25s}
+.download-btn:hover{background:var(--teal-600);transform:translateY(-2px)}
+.download-btn svg{width:21px;height:21px;fill:currentColor}
+.download-btn small{display:block;font-size:9px;letter-spacing:.04em;opacity:.82;line-height:1.1}
+.download-btn strong{display:block;font-size:14px;line-height:1.2}
+.detect{margin-top:13px;color:rgba(255,255,255,.58);font-family:var(--f-mono);font-size:.72rem;min-height:18px}
+.hero-visual{position:relative;min-height:560px}
+.glow{position:absolute;inset:7% 4% 7% 8%;border-radius:50%;background:radial-gradient(circle,rgba(47,178,142,.34),transparent 65%);filter:blur(4px)}
+.phone{position:absolute;z-index:2;width:230px;padding:7px;border-radius:32px;background:#07111e;box-shadow:0 30px 70px rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.14)}
+.phone img{border-radius:25px;width:100%;height:auto}
+.phone-a{left:5%;top:72px;transform:rotate(-7deg)}
+.phone-b{right:8%;top:15px;transform:rotate(7deg)}
+.route{position:absolute;z-index:1;left:0;right:0;bottom:20px;height:170px;border-radius:50%;background:linear-gradient(160deg,rgba(21,145,114,.18),rgba(127,214,187,.04));border-top:1px solid rgba(127,214,187,.3);transform:rotate(-4deg)}
+.visual-label{position:absolute;z-index:5;left:8%;bottom:30px;padding:10px 15px;border-radius:999px;background:rgba(6,20,32,.78);border:1px solid rgba(127,214,187,.3);font-size:.78rem;color:var(--teal-300);font-family:var(--f-mono)}
+.section{padding:80px 0;background:var(--paper)}
+.section-head{text-align:center;max-width:720px;margin:0 auto 44px}
+.section-head h2{font-family:var(--f-display);font-size:clamp(2rem,3.6vw,2.8rem);letter-spacing:-.02em;margin-bottom:13px}
+.section-head p{color:var(--ink-500);font-size:1.05rem;line-height:1.6}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.feature{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);padding:24px;box-shadow:var(--shadow-card)}
+.feature .icon{font-size:22px;margin-bottom:14px}
+.feature h3{font-family:var(--f-display);font-size:1.05rem;margin:0 0 7px}
+.feature p{color:var(--ink-500);font-size:.9rem;line-height:1.5}
+.bottom{background:var(--navy-900);color:#fff;padding:58px 0}
+.bottom-grid{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.bottom h2{font-family:var(--f-display);font-size:clamp(1.8rem,3.2vw,2.6rem);margin:0 0 8px}
+.bottom p{color:rgba(255,255,255,.66);margin:0;line-height:1.5}
+.bottom .download-btn{background:var(--white);color:var(--navy-900);box-shadow:none}
+.bottom .download-btn:hover{background:var(--teal-tint)}
+footer{background:var(--navy-950);color:rgba(255,255,255,.52);padding:30px 0 36px;font-size:.8rem}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-row a:hover{color:#fff}
+@media(max-width:1180px){
+.nav-links{position:fixed;inset:0;top:0;background:var(--navy-950);flex-direction:column;justify-content:center;gap:30px;transform:translateY(-101%);transition:transform .4s var(--ease);z-index:99}
+.nav-links a{font-size:1.4rem} .nav-links.is-open{transform:translateY(0)} .nav-toggle{display:inline-flex} .nav-right .store-links{display:none}
+}
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr;gap:20px}.hero{padding-top:132px}.hero-visual{min-height:510px;max-width:650px;width:100%;margin:auto}
+.features{grid-template-columns:1fr 1fr}.bottom-grid{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:520px){
+.wrap{padding-inline:20px}.hero{padding-top:118px;padding-bottom:65px}h1{font-size:clamp(2.55rem,13vw,3.4rem)}.lede{font-size:1rem}
+.ctas{display:grid;grid-template-columns:1fr}.download-btn{justify-content:center}.hero-visual{min-height:410px}.phone{width:170px;border-radius:25px}.phone img{border-radius:19px}.phone-a{left:0;top:75px}.phone-b{right:0;top:20px}
+.features{grid-template-columns:1fr}.section{padding:62px 0}.visual-label{left:0;bottom:14px;font-size:.65rem}
+}
+</style>
+</head>
+<body>
+<div class="nav-bg"></div>
+<header class="nav">
+<a href="../index.html" class="brand"><img src="../assets/logo.png" alt="TrustRoute logo"><span class="brand-word">Trust<b>Route</b></span></a>
+<nav class="nav-links" id="navLinks">
+<a href="../index.html">Home</a>
+<a href="../index.html#how-it-works">How it works</a>
+<a href="../index.html#safety">Safety</a>
+<a href="../index.html#faq">FAQ</a>
+<a href="../investors.html">Investors</a>
+<a href="../blog.html">Blog</a>
+<a href="../privacy.html">Privacy</a>
+<a href="../terms.html">Terms</a>
+</nav>
+<div class="nav-right">
+<div class="store-links" aria-label="Download TrustRoute">
+<a class="store-badge" href="https://play.google.com/store/apps/details?id=com.emergent.verifiedcommute.kr5l3d&hl=en_IN" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3.2 2.6c-.2.3-.3.7-.3 1.2v16.4c0 .5.1.9.3 1.2L13.1 12 3.2 2.6zM14.1 12.9l2.7 2.7-10.7 6.1L14.1 12.9zM14.1 11.1L6.1 2.3l10.7 6.1-2.7 2.7zM18 9.3l2.4 1.4c.8.5.8 1.2 0 1.7L18 13.8 15.1 12 18 9.3z"/></svg><span><small>GET IT ON</small><strong>Google Play</strong></span></a>
+<a class="store-badge" href="https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.2 1.2 2.2 1.6 2.9 2.8 2.9 1.1 0 1.6-.7 2.9-.7 1.4 0 1.8.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.9zM15 5.9c.6-.8 1-1.9.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2z"/></svg><span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span></a>
+</div>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="eyebrow">Download · TrustRoute</span>
+<h1>Verified people.<br><span class="accent">Trusted rides.</span><br>Every commute.</h1>
+<p class="lede">Get TrustRoute on your phone and find verified people travelling your way. Fixed fares, zero commission, women-only rides and smarter route matching — built for the daily office commute.</p>
+<div class="ctas">
+<a id="android" class="download-btn" href="https://play.google.com/store/apps/details?id=com.emergent.verifiedcommute.kr5l3d&hl=en_IN" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3.2 2.6c-.2.3-.3.7-.3 1.2v16.4c0 .5.1.9.3 1.2L13.1 12 3.2 2.6zM14.1 12.9l2.7 2.7-10.7 6.1L14.1 12.9zM14.1 11.1L6.1 2.3l10.7 6.1-2.7 2.7zM18 9.3l2.4 1.4c.8.5.8 1.2 0 1.7L18 13.8 15.1 12 18 9.3z"/></svg><span><small>GET IT ON</small><strong>Google Play</strong></span></a>
+<a id="ios" class="download-btn" href="https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16.7 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 7 1.1 9.2.7 1.1 1.6 2.2 2.8 2.2 1.1 0 1.6-.7 2.9-.7 1.4 0 1.8.7 2.9.7 1.2 0 2-1.1 2.7-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.9zM15 5.9c.6-.8 1-1.9.9-2.9-.9 0-2 .6-2.6 1.3-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.2z"/></svg><span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span></a>
+</div>
+<div class="detect" id="detect">Choose your app store above.</div>
+</div>
+<div class="hero-visual">
+<div class="glow"></div><div class="route"></div>
+<div class="phone phone-a"><img src="../assets/shot-book-seat.webp" alt="TrustRoute book a seat screen"></div>
+<div class="phone phone-b"><img src="../assets/promo-card.webp" alt="TrustRoute app preview"></div>
+<div class="visual-label">🚗 Built for everyday office commuters</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<h2>Everything you need for a better commute.</h2>
+<p>One app for finding a ride, offering a ride and building trusted connections along your everyday route.</p>
+</div>
+<div class="features">
+<article class="feature"><div class="icon">✓</div><h3>Verified &amp; trusted</h3><p>Built around verified profiles and trusted connections.</p></article>
+<article class="feature"><div class="icon" style="color:var(--pink-500)">♀</div><h3>Women-only rides</h3><p>Choose women-only rides when that option suits your commute.</p></article>
+<article class="feature"><div class="icon">₹</div><h3>Zero commission</h3><p>Share rides without a platform commission taking a cut.</p></article>
+<article class="feature"><div class="icon">🌿</div><h3>Lower emissions</h3><p>Fewer cars on the road means a more efficient daily commute.</p></article>
+</div>
+</div>
+</section>
+
+<section class="bottom">
+<div class="wrap bottom-grid">
+<div><h2>Your route is already going somewhere.</h2><p>Find trusted people going the same way.</p></div>
+<div class="ctas" style="margin-top:0"><a class="download-btn" href="https://play.google.com/store/apps/details?id=com.emergent.verifiedcommute.kr5l3d&hl=en_IN" target="_blank" rel="noopener">Get TrustRoute on Google Play</a><a class="download-btn" href="https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861" target="_blank" rel="noopener">Download on the App Store</a></div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap footer-row"><span>© 2026 TrustRoute · For Trusted Rides</span><span><a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a> · <a href="../index.html">trustroute.app</a></span></div>
+</footer>
+
+<script>
+const navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
+navToggle?.addEventListener('click',()=>{const open=navLinks.classList.toggle('is-open');navToggle.setAttribute('aria-expanded',String(open));});
+navLinks?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('is-open');navToggle?.setAttribute('aria-expanded','false');}));
+const ua=navigator.userAgent||"",android=/Android/i.test(ua),ios=/iPhone|iPad|iPod/i.test(ua),a=document.getElementById('android'),i=document.getElementById('ios'),d=document.getElementById('detect');
+if(android){d.textContent='Android detected — Google Play is ready.';a.style.outline='2px solid rgba(127,214,187,.75)';}
+else if(ios){d.textContent='iPhone/iPad detected — App Store is ready.';i.style.outline='2px solid rgba(127,214,187,.75)';}
+else{d.textContent='On mobile? Open this page on your phone and the relevant store will be highlighted.';}
+</script>
+</body>
+</html>

@@ -1,5 +1,151 @@
 [
   {
+    "date": "2026-09-18",
+    "title": "A bus strike is also an attendance-policy test for Delhi employers",
+    "slug": "a-bus-strike-is-also-an-attendance-policy-test-for-delhi-employers-2026-09-18",
+    "category": "Corporate Mobility",
+    "excerpt": "Delhi’s DTC driver disruption has made one point clear: when a bus link fails, asking employees to “make alternate arrangements” can turn a public-transport problem into an attendance, cost and late-shift safety problem. Employers need fair rules before the next disruption.",
+    "sources": [
+      {
+        "title": "Delhi Traffic Police: Potential Disruptions Across Delhi Due to Ongoing Drivers’ Strike",
+        "url": "https://traffic.delhipolice.gov.in/en/%E2%9A%A0%EF%B8%8Fpotential-disruptions-across-delhi-due-ongoing-drivers-strike-%F0%9F%9A%96"
+      },
+      {
+        "title": "The Indian Express: As DTC drivers’ strike leaves commuters stranded, some scramble to find alternatives, others pay more",
+        "url": "https://indianexpress.com/article/cities/delhi/dtc-drivers-day-3-strike-commuters-stranded-10882824/lite/"
+      },
+      {
+        "title": "TrustRoute: Product and policy overview",
+        "url": "https://trustroutepolicies.blogspot.com/2026/08/trust-route.html"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-16",
+    "title": "A Metro-adjacent office is not automatically a commute-ready office",
+    "slug": "a-metro-adjacent-office-is-not-automatically-a-commute-ready-office-2026-09-16",
+    "category": "Corporate Mobility",
+    "excerpt": "A nearby station can improve an office location, but it does not solve the full employee journey. Before signing a lease—or redesigning access at an existing site—employers should test the trip by shift, origin corridor and final-mile conditions.",
+    "sources": [
+      {
+        "title": "CBRE — India Office Occupier Survey 2026: How is AI Influencing Leasing Decisions?",
+        "url": "https://www.cbre.com/insights/reports/india-office-occupier-survey-2026-how-is-ai-influencing-leasing-decisions"
+      },
+      {
+        "title": "Toyota Mobility Foundation — Announces Plans to Scale Sustainable Mobility Solutions Across Indian Cities",
+        "url": "https://www.toyotamobilityfoundation.org/en/press-room/pressrelease09112026/"
+      },
+      {
+        "title": "WRI India — New Initiative Uses Behavioural Science to Encourage Bengaluru Metro Adoption",
+        "url": "https://wri-india.org/media/new-initiative-uses-behavioural-science-encourage-bengaluru-metro-adoption"
+      },
+      {
+        "title": "ITDP India — Traffic Reduction",
+        "url": "https://itdp.in/what-we-do/traffic-reduction/"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-14",
+    "title": "EVs matter—but India’s commute emissions problem also has an empty-seat problem",
+    "slug": "evs-matterbut-indias-commute-emissions-problem-also-has-an-empty-seat-problem-2026-09-14",
+    "category": "Sustainable Mobility",
+    "excerpt": "Electric vehicles can cut tailpipe emissions, but they do not create road space. For Indian office corridors, a credible sustainability plan pairs cleaner vehicles with fuller vehicles, dependable buses and rail, and better first- and last-mile connections.",
+    "sources": [
+      {
+        "title": "CEEW — A Global Mission LiFE: Mitigation Potential of Behavioural Change in Passenger Transport in G20 Countries",
+        "url": "https://www.ceew.in/publications/mission-life-behaviour-change-passenger-transport-g20"
+      },
+      {
+        "title": "Government of India — Economic Survey 2025–26, Chapter 15: Urbanisation",
+        "url": "https://www.indiabudget.gov.in/economicsurvey/doc/eschapter/echap15.pdf"
+      },
+      {
+        "title": "Apple App Store — TrustRoute: For Trusted Rides",
+        "url": "https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-11",
+    "title": "Bengaluru’s paused flyover curbs show why safety needs a workable alternative",
+    "slug": "bengalurus-paused-flyover-curbs-show-why-safety-needs-a-workable-alternative-2026-09-11",
+    "category": "Road Safety",
+    "excerpt": "Bengaluru has paused planned two-wheeler and autorickshaw restrictions on the Airport Road and Electronics City elevated corridors after diversion-related congestion emerged. The lesson is not to abandon road safety, but to test whether the whole replacement journey is safe and workable before a restriction takes effect.",
+    "sources": [
+      {
+        "title": "Bengaluru to restrict certain vehicles on 5 major flyovers from Sept. Check new rules — The Indian Express",
+        "url": "https://indianexpress.com/article/cities/bangalore/bengaluru-to-restrict-certain-vehicles-on-5-major-flyovers-from-sept-check-new-rules-10856635/"
+      },
+      {
+        "title": "Bike, auto curbs on hold at Kempegowda International Airport, E-City flyovers — The New Indian Express",
+        "url": "https://www.newindianexpress.com/cities/bengaluru/2026/Sep/09/bike-auto-curbs-on-hold-at-kempegowda-international-airport-e-city-flyovers"
+      },
+      {
+        "title": "Flyover traffic curbs kick in, Bengaluru motorists not happy — The New Indian Express",
+        "url": "https://www.newindianexpress.com/cities/bengaluru/2026/Sep/05/flyover-traffic-curbs-kick-in-bengaluru-motorists-not-happy"
+      },
+      {
+        "title": "Bengaluru begins vehicle restrictions on five elevated corridors in road-safety pilot — The South First",
+        "url": "https://thesouthfirst.com/karnataka/bengaluru-begins-vehicle-restrictions-on-five-elevated-corridors-in-road-safety-pilot/"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-09",
+    "title": "Delhi’s BRICS traffic advisory is a commuter-planning test: switch, stagger or skip the road trip",
+    "slug": "delhis-brics-traffic-advisory-is-a-commuter-planning-test-switch-stagger-or-skip-the-road--2026-09-09",
+    "category": "Traffic & Commuting",
+    "excerpt": "Delhi Traffic Police has issued a traffic advisory for September 11–13 in connection with the BRICS Summit, while the leaders’ summit is scheduled for September 12–13 at Bharat Mandapam. For commuters, the useful response is not a blanket “leave early” rule: identify whether your route is exposed, use Metro where it removes the uncertain section, and ask employers to stagger flexible trips.",
+    "sources": [
+      {
+        "title": "Delhi Traffic Police — Traffic Diversions and BRICS Summit advisory, September 11–13, 2026",
+        "url": "https://traffic.delhipolice.gov.in/traffic-diversions"
+      },
+      {
+        "title": "Embassy of India, Riyadh — 18th BRICS Summit, September 12–13, 2026, New Delhi",
+        "url": "https://www.eoiriyadh.gov.in/section/press-releases/18th-brics-summit-2026-new-delhi/"
+      },
+      {
+        "title": "The Indian Express — Delhi traffic alert and BRICS-related diversion context",
+        "url": "https://indianexpress.com/article/cities/delhi/delhi-traffic-alert-brics-summit-rehearsal-road-closures-diversions-10858278/"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-08",
+    "title": "Delhi’s bus-safety reminder: a panic button needs a working response chain",
+    "slug": "delhis-bus-safety-reminder-a-panic-button-needs-a-working-response-chain-2026-09-08",
+    "category": "Women's Safety",
+    "excerpt": "Delhi’s late-August bus-safety order reiterates requirements for working tracking devices and accessible panic buttons. Its most useful lesson for women commuters is broader: safety tools matter only when identity, trip information and a clear response process work together.",
+    "sources": [
+      {
+        "title": "No curtains, no unauthorised stops: Delhi government’s new order over bus safety — The Indian Express",
+        "url": "https://indianexpress.com/article/cities/delhi/delhi-government-new-order-on-bus-safety-no-curtains-no-unauthorised-stops-10859661/"
+      },
+      {
+        "title": "Delhi Govt issues safety plan for city, outside buses; orders panic buttons, first-aid kits — The New Indian Express",
+        "url": "https://www.newindianexpress.com/amp/story/cities/delhi/2026/Sep/03/government-issues-safety-plan-for-city-outside-buses-orders-panic-buttons-first-aid-kits"
+      },
+      {
+        "title": "Motor Vehicles (Vehicle Location Tracking Device and Emergency Button) Order, 2018 — Ministry of Road Transport and Highways",
+        "url": "https://morth.nic.in/sites/default/files/notifications_document/File3406.pdf"
+      },
+      {
+        "title": "Vehicle Location Tracking & Emergency Alert System — Delhi Transport Department",
+        "url": "https://vlts.delhi.gov.in/Home.aspx"
+      },
+      {
+        "title": "Which Sociodemographic, In-Vehicle and Transit-Stop Attributes Influence Indian Women Commuters’ Safety and Security Perceptions of Public Transportation? — Transportation Research Record",
+        "url": "https://doi.org/10.1177/03611981251339176"
+      },
+      {
+        "title": "TrustRoute – For Trusted Rides — Apple App Store",
+        "url": "https://apps.apple.com/in/app/trustroute-for-trusted-rides/id6803612861"
+      }
+    ]
+  },
+  {
     "date": "2026-09-04",
     "title": "Delhi’s Pink Saheli transition is a reminder: free bus travel is only one part of a workable commute",
     "slug": "delhis-pink-saheli-transition-is-a-reminder-free-bus-travel-is-only-one-part-of-a-workable-2026-09-04",
