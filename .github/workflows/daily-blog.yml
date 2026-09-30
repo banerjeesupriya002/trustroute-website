@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Generate, fact-check and publish today's article
         env:
@@ -35,14 +37,18 @@ jobs:
 
           git add blog blog.html sitemap.xml
 
+          # Stop successfully if the generator made no changes.
           git diff --cached --quiet && exit 0
 
           git commit -m "chore: publish TrustRoute mobility insight"
 
-          # Synchronize with any commits added to main after checkout.
+          # Get the latest version of main before pushing.
           git fetch origin main
+
+          # Replay this blog commit on top of the latest main.
           git rebase origin/main
 
+          # Push the rebased commit to main.
           git push origin HEAD:main
 
       - name: Notify Slack if automation fails
