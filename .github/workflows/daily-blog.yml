@@ -38,7 +38,12 @@ jobs:
           git diff --cached --quiet && exit 0
 
           git commit -m "chore: publish TrustRoute mobility insight"
-          git push
+
+          # Synchronize with any commits added to main after checkout.
+          git fetch origin main
+          git rebase origin/main
+
+          git push origin HEAD:main
 
       - name: Notify Slack if automation fails
         if: ${{ failure() }}
