@@ -5,6 +5,7 @@ const ROOT = process.cwd();
 const apiKey = process.env.OPENAI_API_KEY;
 const model = process.env.OPENAI_MODEL || "gpt-5.6-terra";
 const minQualityScore = 82;
+const DOWNLOAD_URL = "https://trustroute.app/download/";
 
 /* =========================================================
    APPROVED TRUSTROUTE CATEGORIES
@@ -282,6 +283,8 @@ const topic = await callOpenAI({
   model,
   apiKey,
   input: topicPrompt,
+  reasoningEffort: "low",
+  maxOutputTokens: 1600,
   tools: [{ type: "web_search" }],
   schemaName: "trustroute_topic",
   schema: {
@@ -379,6 +382,7 @@ The reader should finish thinking:
 TRUSTROUTE POSITIONING
 
 Mention TrustRoute naturally, usually after the problem and evidence have been explained.
+When TrustRoute is mentioned as a product, use the exact app download URL https://trustroute.app/download/ where a link is appropriate. Never invent another TrustRoute download URL.
 
 Explain relevant product ideas accurately when applicable:
 
@@ -433,6 +437,8 @@ const draft = await callOpenAI({
   model,
   apiKey,
   input: writerPrompt,
+  reasoningEffort: "medium",
+  maxOutputTokens: 7000,
   tools: [{ type: "web_search" }],
   schemaName: "trustroute_blog_draft",
   schema: blogSchema()
@@ -468,7 +474,8 @@ A GOOD ARTICLE MUST:
 4. Avoid fabricated statistics, quotes, partnerships, customer stories or safety guarantees.
 5. Explain why the issue matters to Indian commuters/corporates/women where relevant.
 6. Connect TrustRoute naturally and accurately.
-7. Avoid substantial overlap with these recent titles:
+7. Where the article mentions TrustRoute as a product, ensure the reader has a clear path to https://trustroute.app/download/.
+8. Avoid substantial overlap with these recent titles:
 
 ${JSON.stringify(recentHistory.slice(0, 30))}
 
@@ -522,6 +529,8 @@ const edited = await callOpenAI({
   model,
   apiKey,
   input: editorPrompt,
+  reasoningEffort: "medium",
+  maxOutputTokens: 7000,
   tools: [{ type: "web_search" }],
   schemaName: "trustroute_blog_editor",
   schema: {
@@ -618,7 +627,10 @@ if (!edited.publish || edited.quality_score < minQualityScore) {
 }
 
 
-const post = edited;
+const post = {
+  ...edited,
+  body_html: promoteTrustRoute(postBodyHtml(edited.body_html))
+};
 
 
 /* =========================================================
@@ -874,7 +886,9 @@ async function callOpenAI({
   input,
   tools,
   schemaName,
-  schema
+  schema,
+  reasoningEffort = "medium",
+  maxOutputTokens = 7000
 }) {
 
   const response = await fetch(
@@ -891,8 +905,10 @@ async function callOpenAI({
         model,
 
         reasoning: {
-          effort: "medium"
+          effort: reasoningEffort
         },
+
+        max_output_tokens: maxOutputTokens,
 
         tools,
 
@@ -912,8 +928,25 @@ async function callOpenAI({
 
 
   if (!response.ok) {
+    const raw = await response.text();
+    let parsed = null;
+
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      // Keep the raw response for non-JSON API/proxy errors.
+    }
+
+    const code = parsed?.error?.code;
+
+    if (code === "credit_balance_exhausted") {
+      throw new Error(
+        "OpenAI API credits are exhausted (credit_balance_exhausted). Add API credits in the OpenAI API billing settings, then rerun this workflow. This is an API billing issue, not a TrustRoute website/code issue."
+      );
+    }
+
     throw new Error(
-      `OpenAI API error: ${await response.text()}`
+      `OpenAI API error${code ? ` (${code})` : ""}: ${raw}`
     );
   }
 
@@ -1083,6 +1116,37 @@ function blogSchema() {
       "sources"
     ]
   };
+}
+
+
+/* =========================================================
+   TRUSTROUTE DOWNLOAD LINK PROMOTION
+   ========================================================= */
+
+function postBodyHtml(value) {
+  return String(value ?? "");
+}
+
+function promoteTrustRoute(html) {
+  const parts = String(html ?? "").split(/(<[^>]+>)/g);
+  let insideAnchor = false;
+
+  return parts.map(part => {
+    if (part.startsWith("<")) {
+      if (/^<a\b/i.test(part)) insideAnchor = true;
+      if (/^<\/a>/i.test(part)) insideAnchor = false;
+      return part;
+    }
+
+    if (insideAnchor || !/\bTrustRoute\b/i.test(part)) {
+      return part;
+    }
+
+    return part.replace(
+      /\bTrustRoute\b/g,
+      `<strong><a href="${DOWNLOAD_URL}" rel="noopener">TrustRoute</a></strong>`
+    );
+  }).join("");
 }
 
 
