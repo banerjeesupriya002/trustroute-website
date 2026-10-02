@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-02",
+    "title": "Maharashtra’s carpool rules draw a useful line: cost-sharing is not a cheap cab",
+    "slug": "maharashtras-carpool-rules-draw-a-useful-line-cost-sharing-is-not-a-cheap-cab-2026-10-02",
+    "category": "Carpooling",
+    "excerpt": "Maharashtra’s July 2026 aggregator rules define private carpooling around an owner’s own journey, capped cost-sharing and a no-profit principle. The detail matters: a fixed price or an app alone does not turn an on-demand ride into a legitimate carpool.",
+    "sources": [
+      {
+        "title": "Maharashtra Motor Vehicle Aggregator Rules, 2026 — notified gazette text (15 July 2026)",
+        "url": "https://www.scribd.com/document/1076518924/MaharashtraMotorVehicleAggregatorRules2026Gazette150726-2"
+      },
+      {
+        "title": "Maharashtra Transport Department — Draft Maharashtra Motor Vehicle Aggregator Rules, 2025",
+        "url": "https://transport.maharashtra.gov.in/Site/Upload/GR/Aggregarot%20Draft%20Rules%20dt%2009102025.pdf"
+      },
+      {
+        "title": "Ministry of Road Transport and Highways — Motor Vehicle Aggregator Guidelines, 2025",
+        "url": "https://morth.nic.in/sites/default/files/circulars_document/MV-Aggregators-Guidelines-2025%20-%20English%20and%20Hindi.pdf"
+      },
+      {
+        "title": "TrustRoute — product, verification and safety information",
+        "url": "https://trustroute.app/"
+      }
+    ]
+  },
+  {
     "date": "2026-09-30",
     "title": "A women’s commute safety audit should follow the whole trip—not stop at the office gate",
     "slug": "a-womens-commute-safety-audit-should-follow-the-whole-tripnot-stop-at-the-office-gate-2026-09-30",
