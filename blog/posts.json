@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-05",
+    "title": "Women’s Metro access is decided before the station gate",
+    "slug": "womens-metro-access-is-decided-before-the-station-gate-2026-10-05",
+    "category": "Women's Safety",
+    "excerpt": "A new Hyderabad study finds that perceived safety and security are associated with first- and last-mile mode choices, including greater use of personal cars by women on some commute legs. The policy lesson is not to replace Metro with cars: it is to make walking, waiting and feeder connections safer—and to treat verified cost-sharing as an optional bridge where a car is still needed.",
+    "sources": [
+      {
+        "title": "How do perceptions of safety and security and tech savviness influence the choice of first and last-mile modes?",
+        "url": "https://www.sciencedirect.com/science/article/pii/S0967070X26003252"
+      },
+      {
+        "title": "Designing Public Transport in India That Works for All",
+        "url": "https://www.worldbank.org/en/news/feature/2023/02/09/how-to-help-ensure-safe-and-inclusive-public-spaces-and-public-transport-for-women-in-india"
+      },
+      {
+        "title": "Economic Survey 2025–26: Urbanisation—Making India’s Cities Work for Its Citizens",
+        "url": "https://www.indiabudget.gov.in/economicsurvey/doc/eschapter/echap15.pdf"
+      },
+      {
+        "title": "Download TrustRoute",
+        "url": "https://trustroute.app/download/"
+      }
+    ]
+  },
+  {
     "date": "2026-10-02",
     "title": "Maharashtra’s carpool rules draw a useful line: cost-sharing is not a cheap cab",
     "slug": "maharashtras-carpool-rules-draw-a-useful-line-cost-sharing-is-not-a-cheap-cab-2026-10-02",
