@@ -1,5 +1,26 @@
 [
   {
+    "date": "2026-10-09",
+    "title": "Office start times are transport policy: what new national commute data means for employers",
+    "slug": "office-start-times-are-transport-policy-what-new-national-commute-data-means-for-employers-2026-10-09",
+    "category": "Corporate Mobility",
+    "excerpt": "India’s first National Household Travel Survey shows that fixed-workplace trips are heavily concentrated before 10 am. Employers cannot fix every road or train service, but they can reduce avoidable pressure by making arrival times, transit connections and voluntary carpooling work together.",
+    "sources": [
+      {
+        "title": "National Statistics Office, National Household Travel Survey, July 2025–June 2026: Factsheet",
+        "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/oct/doc_10098_20261005_16310501.pdf"
+      },
+      {
+        "title": "Press Information Bureau, National Household Travel Survey, July 2025–June 2026",
+        "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2319180&lang=2&reg=48"
+      },
+      {
+        "title": "TrustRoute: product, verification and carpooling information",
+        "url": "https://trustroute.app/"
+      }
+    ]
+  },
+  {
     "date": "2026-10-07",
     "title": "NCW’s app-transport guidance brings a missing carpool question into view: who else is in the car?",
     "slug": "ncws-app-transport-guidance-brings-a-missing-carpool-question-into-view-who-else-is-in-the-2026-10-07",
