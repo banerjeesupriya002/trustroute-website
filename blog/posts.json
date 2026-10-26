@@ -1,5 +1,34 @@
 [
   {
+    "date": "2026-10-26",
+    "title": "Smart commuting needs useful data boundaries—not routine surveillance",
+    "slug": "smart-commuting-needs-useful-data-boundariesnot-routine-surveillance-2026-10-26",
+    "category": "Commuter Insights",
+    "excerpt": "Bhubaneswar’s Urban Mobility India conference highlighted real-time data, safe mobility and first/last-mile connections. The commuter-level test is more exacting: technology should make a trip easier to coordinate while clearly limiting who can see personal location and trip data, for what purpose and for how long.",
+    "sources": [
+      {
+        "title": "PIB: 19th Urban Mobility India Conference and Exhibition concludes in Bhubaneswar",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2328059"
+      },
+      {
+        "title": "Ministry of Electronics and Information Technology: Digital Personal Data Protection Act, 2023",
+        "url": "https://www.meity.gov.in/writereaddata/files/Digital%20Personal%20Data%20Protection%20Act%202023.pdf"
+      },
+      {
+        "title": "Ministry of Electronics and Information Technology: Digital Personal Data Protection Rules, 2025 and enforcement timeline",
+        "url": "https://www.meity.gov.in/documents/act-and-policies/digital-personal-data-protection-rules-2025-gDOxUjMtQWa?pageTitle=Digital-Personal-Data-Protection-Rules-2025"
+      },
+      {
+        "title": "TrustRoute Privacy Policy",
+        "url": "https://trustroute.app/privacy"
+      },
+      {
+        "title": "TrustRoute Download",
+        "url": "https://trustroute.app/download/"
+      }
+    ]
+  },
+  {
     "date": "2026-10-23",
     "title": "Delhi’s 50% office cap starts November 1. A fair rota is part of the pollution response.",
     "slug": "delhis-50-office-cap-starts-november-1-a-fair-rota-is-part-of-the-pollution-response-2026-10-23",
