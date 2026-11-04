@@ -1,5 +1,38 @@
 [
   {
+    "date": "2026-11-04",
+    "title": "Delhi–Gurugram border checks expose a commute-policy gap employers can fix",
+    "slug": "delhigurugram-border-checks-expose-a-commute-policy-gap-employers-can-fix-2026-11-04",
+    "category": "Corporate Mobility",
+    "excerpt": "The first days of Delhi’s winter vehicle-entry curbs showed that an NH-48 delay can be caused by more than one thing—and that an employee should not have to solve eligibility, attendance and a safe fallback from a traffic queue. Employers need a lawful, privacy-conscious plan before the next peak-hour disruption.",
+    "sources": [
+      {
+        "title": "PIB: Winter Action Plan measures for Delhi, including restrictions on non-Delhi vehicles below BS-VI standards",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2315941&lang=2&reg=48&v=6"
+      },
+      {
+        "title": "Indian Express: Gurugram and Noida border checks ahead of Delhi’s BS-VI curbs",
+        "url": "https://indianexpress.com/article/delhi/delhi-non-bs-vi-vehicle-ban-gurugram-noida-border-screening-rules-10945570/"
+      },
+      {
+        "title": "Indian Express: Delhi’s BS-VI curbs, Day 2—checks at some borders and free passage at others",
+        "url": "https://indianexpress.com/article/cities/delhi/delhi-bs-vi-curbs-day-checks-some-borders-free-passage-10947059/"
+      },
+      {
+        "title": "Hindustan Times: Traffic snarls continue at Delhi–Gurugram border; checks not the major cause, officials say",
+        "url": "https://www.hindustantimes.com/cities/gurugram-news/traffic-snarls-continue-at-delhi-gurugram-border-bs-vi-checks-not-major-causeofficials-101793711081046.html"
+      },
+      {
+        "title": "Delhi Metro Rail Corporation: Present network",
+        "url": "https://delhimetrorail.com/pages/about-us/present-network"
+      },
+      {
+        "title": "TrustRoute: verification, cost-sharing and trip-feature information",
+        "url": "https://trustroute.app/"
+      }
+    ]
+  },
+  {
     "date": "2026-11-02",
     "title": "Delhi’s clean-bus entry rule makes staff transport a service-continuity test",
     "slug": "delhis-clean-bus-entry-rule-makes-staff-transport-a-service-continuity-test-2026-11-02",
