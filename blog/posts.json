@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-13",
+    "title": "The Supreme Court’s NCR emissions roadmap request is a reason to fix commute data—not collect more of it",
+    "slug": "the-supreme-courts-ncr-emissions-roadmap-request-is-a-reason-to-fix-commute-datanot-collec-2026-11-13",
+    "category": "Corporate Mobility",
+    "excerpt": "The Supreme Court has asked Delhi, neighbouring states and local authorities for a time-bound plan to strengthen vehicle-emissions enforcement, with the vehicular-emissions matter listed for November 23, 2026. Employers should respond with fair attendance flexibility and a voluntary, data-minimised view of commute constraints—not home-address tracking or compulsory carpools.",
+    "sources": [
+      {
+        "title": "Supreme Court of India — Order dated November 6, 2026 in In Re: Curbing Air Pollution in the National Capital Region",
+        "url": "https://api.sci.gov.in/supremecourt/2026/27317/27317_2026_1_11_75612_Order_06-Nov-2026.pdf"
+      },
+      {
+        "title": "Press Information Bureau — CAQM approves revised GRAP schedule",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2316597&fh=&lang=2&reg=48"
+      },
+      {
+        "title": "TrustRoute — Verified people, trusted rides: product information",
+        "url": "https://trustroute.app/"
+      },
+      {
+        "title": "TrustRoute — Download the app",
+        "url": "https://trustroute.app/download/"
+      }
+    ]
+  },
+  {
     "date": "2026-11-11",
     "title": "Delhi Metro’s 80-lakh Monday is a last-mile capacity test for offices—not proof the commute is solved",
     "slug": "delhi-metros-80-lakh-monday-is-a-last-mile-capacity-test-for-officesnot-proof-the-commute--2026-11-11",
