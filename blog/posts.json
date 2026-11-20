@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-20",
+    "title": "Dense fog is a commute-safety test: don’t let pickup coordination become an afterthought",
+    "slug": "dense-fog-is-a-commute-safety-test-dont-let-pickup-coordination-become-an-afterthought-2026-11-20",
+    "category": "Corporate Mobility",
+    "excerpt": "IMD has forecast dense fog for Haryana, Chandigarh and Delhi, and Punjab, through November 22. For office commuters, the response is not merely slower driving: it is flexible attendance and a clear pickup protocol that makes delays, changes and opting out safer.",
+    "sources": [
+      {
+        "title": "India Meteorological Department, Met Centre Chandigarh: Subdivision-wise warnings for Haryana, Chandigarh & Delhi and Punjab",
+        "url": "https://mausam.imd.gov.in/imd_latest/contents/subdivisionwise-warning_mc.php?id=17"
+      },
+      {
+        "title": "India Meteorological Department: National Highway, Railway and Aviation Fog Warning Dashboard",
+        "url": "https://dss.imd.gov.in/dwr_img/GIS/fogwarningportal/main.html"
+      },
+      {
+        "title": "Ministry of Road Transport & Highways / PIB: NHAI Takes Measures to Enhance Visibility Due to Foggy Conditions",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2204143&lang=1&reg=1"
+      },
+      {
+        "title": "TrustRoute: Download page",
+        "url": "https://trustroute.app/download/"
+      }
+    ]
+  },
+  {
     "date": "2026-11-18",
     "title": "Cyberabad’s reported 82% personal-vehicle share is a prompt to measure people moved—not parking filled",
     "slug": "cyberabads-reported-82-personal-vehicle-share-is-a-prompt-to-measure-people-movednot-parki-2026-11-18",
