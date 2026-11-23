@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-23",
+    "title": "Delhi’s evening peak stayed flat in early November. Employers should measure departures—not just sign-ins.",
+    "slug": "delhis-evening-peak-stayed-flat-in-early-november-employers-should-measure-departuresnot-j-2026-11-23",
+    "category": "Corporate Mobility",
+    "excerpt": "CSE’s comparison of Delhi traffic on November 2–6 with October 30 found no flattening of the evening peak during the first week of pollution restrictions. It is not proof that office flexibility failed, but it is a useful warning: arrival flexibility does not automatically change when people leave.",
+    "sources": [
+      {
+        "title": "Centre for Science and Environment: Delhi’s early winter pollution worsens in 2026",
+        "url": "https://www.cseindia.org/APC-Briefing-note-early-winter-pollutionNov2026.pdf"
+      },
+      {
+        "title": "CAQM order dated October 30, 2026: precautionary measures in Delhi-NCR from November 5 to 20",
+        "url": "https://environment.delhi.gov.in/sites/default/files/environment/universal/order_dt._30.10.2026_for_restrictions_during_15_to_20_nov_2026_1.pdf"
+      },
+      {
+        "title": "CAQM Direction No. 104: Revised GRAP schedule for NCR, September 2026",
+        "url": "https://environment.delhi.gov.in/sites/default/files/environment/circulars-orders/direction-104_revised_grap_schedule_sep_2026.pdf"
+      },
+      {
+        "title": "TrustRoute: verification, trip-coordination and cost-sharing information",
+        "url": "https://trustroute.app/"
+      }
+    ]
+  },
+  {
     "date": "2026-11-20",
     "title": "Dense fog is a commute-safety test: don’t let pickup coordination become an afterthought",
     "slug": "dense-fog-is-a-commute-safety-test-dont-let-pickup-coordination-become-an-afterthought-2026-11-20",
